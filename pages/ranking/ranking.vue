@@ -2,10 +2,8 @@
 	<view class="container">
 		<view class="container-header">
 			<view class="navbar">
-				<button type="default" plain class="talk-btn">
-					<image src="/static/images/order/order_icon_talk2.0.png"></image>
-					<view>上榜攻略</view>
-				</button>
+				<view type="default" plain class="talk-btn">
+				</view>
 			</view>
 
 			<view class="tabbar">
@@ -59,6 +57,17 @@
 						本周助力好友
 					</view>
 				</view>
+			</view>
+			<view class="tags">
+					<view class="item" style="border-bottom: solid 1rpx #dba871;">
+						历史榜单
+					</view>
+					<view class="item" style="border-bottom: solid 1rpx #dba871;">
+						上榜攻略
+					</view>
+					<view class="item"  >
+						获得奖励
+					</view>
 			</view>
 		</view>
 		<swiper :current="tabIndex" :duration="300" class="swiper" :show-scrollbar="false">
@@ -232,7 +241,20 @@
 	.container-header {
 		height: 580rpx;
 		background-color: #DBA871;
-
+		position: relative;
+		.tags{
+			position: absolute;
+			right: 20rpx;
+			bottom: -300rpx;
+			z-index: 1000;
+			 background: rgba(0, 0, 0 ,0.2);
+			 color: white;
+			.item{
+				
+				 padding: 20rpx;
+			}
+		}
+			
 		.navbar {
 			height: calc(44px + var(--status-bar-height));
 
@@ -240,7 +262,7 @@
 			background-color: #DBA871;
 
 			.talk-btn {
-				background-color: #FFFFFF;
+				
 				height: 32px;
 				margin-left: 10px;
 				margin-top: 26px;
@@ -252,7 +274,7 @@
 				justify-content: center;
 				font-size: $font-size-sm !important;
 				padding: 0 20rpx;
-				border-radius: 50rem !important;
+			
 
 
 				image {
