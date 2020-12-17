@@ -25,7 +25,7 @@
 	}, {
 		"path": "pages/integrals/mall",
 		"style": {
-			"navigationBarTitleText": "积分商城"
+			"navigationBarTitleText": "星球商城"
 		}
 	}, {
 		"path": "pages/integrals/detail",

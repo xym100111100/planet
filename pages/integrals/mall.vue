@@ -3,21 +3,23 @@
 		<!-- 可用积分 begin -->
 		<view class="integrals-section">
 			<view class="integrals">
-				<view class="title">可用积分</view>
+				<view class="title">不可用金额</view>
 				<view class="value">63</view>
 			</view>
 			<view class="menu">
-				<view class="item" @tap="integralScores">积分明细</view>
+				<view class="item" @tap="integralScores">充值说明</view>
 				<view class="divider"></view>
-				<view class="item">兑换记录</view>
+				<view class="item" @tap="integralScores">充值明细</view>
+				<view class="divider"></view>
+				<view class="item">充值记录</view>
 			</view>
 		</view>
 		<!-- 可用积分 end -->
 		<view class="integrals-mall">
-			<view class="navbar">
+			<!-- <view class="navbar">
 				<view class="item" :class="{active: !memberType}" @tap="handleSwitchMemberType(0)">GO会员专区</view>
 				<view class="item" :class="{active: memberType}" @tap="handleSwitchMemberType(1)">星球会员专区</view>
-			</view>
+			</view> -->
 			<view class="list-wrapper">
 				
 				<view class="star-member-intro" v-if="memberType">
@@ -35,12 +37,12 @@
 					<view class="item" v-for="(product, index) in productList" :key="index" @tap="detail(product)">
 						<image :src="product.http_url + product.image_url" class="image" mode="widthFix"></image>
 						<view class="info">
-							<view class="title">{{ product.name }}</view>
+							<!-- <view class="title">1张星球卷</view> -->
 							<view class="score">
-								<view class="value">{{ product.score }}</view>
-								<view>积分</view>
+								<view class="value">1 </view>
+								<view>星球卷</view>
+							</view>						
 							</view>
-						</view>
 					</view>
 				</view>
 				

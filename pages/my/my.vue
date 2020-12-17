@@ -25,12 +25,12 @@
 					<navigator class="grid" open-type="navigate" url="/pages/integrals/mall">
 						<image src="/static/images/my/me_icon_points.png"></image>
 						<view class="value">63</view>
-						<view class="title">奶茶星球</view>
+						<view class="title">星球商城</view>
 					</navigator>
 					<view class="grid" hover-class="opacity-6">
 						<image src="/static/images/my/me_icon_quan.png"></image>
 						<view class="value">0</view>
-						<view class="title">欢乐劵</view>
+						<view class="title">星球劵</view>
 					</view>
 					<navigator class="grid" open-type="navigate" url="/pages/my/wallet">
 						<image src="/static/images/my/me_icon_wallet.png"></image>
@@ -40,14 +40,14 @@
 					<navigator class="grid" open-type="navigate" url="/pages/gifts/gifts">
 						<image src="/static/images/my/me_icon_gift_card.png"></image>
 						<view class="value">0</view>
-						<view class="title">签到有礼</view>
+						<view class="title">每日签到</view>
 					</navigator>
 				</view>
 			</view>
 			<!-- member card end -->
 			<!-- 星球播报 begin -->
 			<view class="xinqiubobao">
-				<view class="title">星球播报</view>
+				<view class="title">星球动态</view>
 				<swiper class="swiper" next-margin="50px" autoplay :interval="5000" :duration="500" circular>
 					<swiper-item class="swiper-item" v-for="(item, index) in boardcast" :key="index">
 						<view class="swiper-item-wrapper">
@@ -74,7 +74,7 @@
 			<!-- 任务中心 end -->
 		</view>
 		<!-- 开通礼包 begin -->
-		<view class="open-gift">
+	<!-- 	<view class="open-gift">
 			<view class="header">
 				<view class="title">开通礼包</view>
 				<view class="subtitle" @tap="openMember">更多</view>
@@ -123,13 +123,13 @@
 					</view>
 				</view>
 			</view>
-		</view>
+		</view> -->
 		<!-- 开通礼包 end -->
 		
-		<list-cell hover arrow @click="myCode">
+		<list-cell hover arrow >
 			<view class="list-cell-wrapper">
-				<view view="title">会员码</view>
-				<view class="subtitle">门店扫码积分、喜茶钱包和阿喜有礼卡支持</view>
+				<view view="title">星球主题</view>
+				<view class="subtitle">获得免费奶茶与修改整个星球主题权力</view>
 			</view>
 		</list-cell>
 		<list-cell hover arrow>

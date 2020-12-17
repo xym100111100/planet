@@ -25,7 +25,10 @@ function request(url, data, method) {
 		});
 	} else {
 		return new Promise(resolve => {
+			uni.showLoading()
+			
 			setTimeout(()=>{
+				uni.hideLoading()
 				resolve(Mock(url))
 			},1000)
 

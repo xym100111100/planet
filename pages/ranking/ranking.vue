@@ -78,7 +78,7 @@
 						<view class="order-list">
 							<navigator class="order" v-for="(item, index) in kingList1" :key="index" open-type="navigate" :url="'/pages/order/detail?id=' + item.id">
 								<view class="index-num">
-									{{index +4}}
+									{{index +1}}
 								</view>
 								<view class="header">
 
@@ -120,55 +120,54 @@
 				</scroll-view>
 
 			</swiper-item>
-			<!-- 当前订单 end -->
-			<!-- 历史订单 begin -->
+			<!-- 星球榜 end -->
+			<!-- 好友榜 begin -->
 			<swiper-item @touchmove.stop="handleSwiperItemChange">
-				<!-- 当前订单 begin -->
+				<!-- 好友榜 begin -->
 
 				<scroll-view scroll-y="true" class="orders-scroll">
 					<view class="wrapper">
 						<view class="order-list">
-							<navigator class="order" v-for="(order, index) in orders" :key="index" open-type="navigate" :url="'/pages/order/detail?id=' + order.id">
+							<navigator class="order" v-for="(item, index) in kingList1" :key="index" open-type="navigate" :url="'/pages/order/detail?id=' + item.id">
 								<view class="index-num">
-									{{index +4}}
+									{{index +1}}
 								</view>
 								<view class="header">
+				
 									<view class="flex-fill font-size-medium header-left  ">
-										<image src="https://wx.qlogo.cn/mmopen/vi_32/Hx7MFkCEmZVHziaTTiaHSiaCs4ApnH5CD0nYOhOg1nYUUMYtxMXkL6L4VL5icRfO5w4LGzW5ib0FZicwj2MficyYfZgCw/132"
+										<image :src="item.portrait"
 										 class="avatar"></image>
-										<text>{{ order.shop.name }}</text>
+										<text>{{item.name }}</text>
 									</view>
 									<view class="status">
 										<view>
 											<view>
-												<view>
-													获得<text class="back">3</text> ￥
-												</view>
-												<view class="total">
-													购买3.6￥
-												</view>
+												获得<text class="back">{{item.backMoney}}</text> ￥
+											</view>
+											<view class="total">
+												购买{{item.payMoney}}￥
 											</view>
 										</view>
 									</view>
+				
 								</view>
 								<view class="friends">
 									<view class="friends-list">
-										<image class="list-img" src="https://wx.qlogo.cn/mmopen/vi_32/Hx7MFkCEmZVHziaTTiaHSiaCs4ApnH5CD0nYOhOg1nYUUMYtxMXkL6L4VL5icRfO5w4LGzW5ib0FZicwj2MficyYfZgCw/132"
+										<image v-for="(img ,index) in item.friendsList"  :key="index"  class="list-img" :src="img"
 										 mode=""></image>
 									</view>
 								</view>
-
-
+				
 							</navigator>
 						</view>
 						<!-- <view class="no-order-content">
-								<image src="https://go.cdn.heytea.com/storage/ad/2020/05/20/0bdb360866d94aa4a4404c0b676a1982.jpg"></image>
-								<view class="tips">
-									<view>您今天还没有下单</view>
-									<view>快去选择一杯喜欢的茶吧</view>
-								</view>
-								<button type="primary" class="font-size-lg" hover-class="none">去下单</button>
-							</view> -->
+							<image src="https://go.cdn.heytea.com/storage/ad/2020/05/20/0bdb360866d94aa4a4404c0b676a1982.jpg"></image>
+							<view class="tips">
+								<view>您今天还没有下单</view>
+								<view>快去选择一杯喜欢的茶吧</view>
+							</view>
+							<button type="primary" class="font-size-lg" hover-class="none">去下单</button>
+						</view> -->
 					</view>
 				</scroll-view>
 			</swiper-item>
@@ -186,7 +185,8 @@
 				orderMenuIndex: 0,
 				orders: [],
 				storeOrders: [],
-				kingList1:[]
+				kingList1:[],
+				kingList2:[]
 			}
 		},
 		async onLoad() {},
@@ -206,6 +206,7 @@
 					data = []
 				} = await this.$api2.request('/ranking/getRankingList')
 				this.kingList1  = data
+				this.kingList2  = data
 			},
 			async lower(e) {
 				console.log(e)
@@ -487,7 +488,7 @@
 			.index-num {
 				color: $text-color-assist;
 				position: absolute;
-				left: 20rpx;
+				left: 25rpx;
 				top: 48%;
 				font-size: $font-size-lg;
 			}

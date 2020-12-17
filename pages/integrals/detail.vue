@@ -2,31 +2,31 @@
 	<view class="container" v-if="product">
 		<image :src="product.http_url + product.image_url" class="w-100" mode="widthFix"></image>
 		<view class="header">
-			<view class="title">{{ product.name }}</view>
+			<view class="title">1张星球卷</view>
 			<view class="subtitle">
 				<view class="score">{{ product.score }}</view>
-				<view>积分</view>
+				<view>元</view>
 			</view>
 		</view>
 		<view class="content">
 			<list-cell :padding="padding" :hover="false" last>
 				<view class="row">
 					<view class="label">商品类型</view>
-					<view class="text">{{ product.type }}</view>
+					<view class="text">不限时星球卷</view>
 				</view>
 			</list-cell>
 			<list-cell :padding="padding" :hover="false" last>
 				<view class="row">
 					<view class="label">有效期限</view>
-					<view class="text">自获取之日起{{ product.period_day + product.unit_time }}内有效</view>
+					<view class="text">自获取之日起有效</view>
 				</view>
 			</list-cell>
-			<list-cell :padding="padding" :hover="false" last>
+			<!-- <list-cell :padding="padding" :hover="false" last>
 				<view class="row">
 					<view class="label">卡券面额</view>
 					<view class="text">{{ product.cut }}</view>
 				</view>
-			</list-cell>
+			</list-cell> -->
 			<list-cell :padding="padding" :hover="false" last>
 				<view class="row">
 					<view class="label">卡卷门槛</view>
@@ -48,24 +48,24 @@
 			<list-cell :padding="padding" :hover="false" last>
 				<view class="row">
 					<view class="label">可用场景</view>
-					<view class="text">仅限在喜茶GO小程序下单时，选择“外卖配送”后可用</view>
+					<view class="text">下单后用来换取刷运气的机会</view>
 				</view>
 			</list-cell>
-			<list-cell :padding="padding" :hover="false" last>
+			<!-- <list-cell :padding="padding" :hover="false" last>
 				<view class="row">
 					<view class="label">礼品说明</view>
 					<view class="text">{{ product.content_text }}</view>
 				</view>
-			</list-cell>
+			</list-cell> -->
 			<list-cell :padding="padding" :hover="false" last>
 				<view class="row">
-					<view class="label">礼品介绍</view>
-					<view class="text">{{ product.remark }}</view>
+					<view class="label">购买介绍</view>
+					<view class="text">购买星球卷支付的金额在支付之日的第二天自动转到小程序余额中即可继续消费，不可当日消费与提现。</view>
 				</view>
 			</list-cell>
 		</view>
 		
-		<view class="bottom disabled">积分不足</view>
+		<view class="bottom disabled">确认支付</view>
 	</view>
 </template>
 
