@@ -12,8 +12,11 @@ import hotSearch from './hotSearch.js'
 import historySearch from './historySearch.js'
 import orderDetail from './orderDetail.js'
 import giftCards from './giftCards.js'
+import customerCoupons from './customer-coupons.js'
+import rechargeCards from './rechargeCards'
 
 const json = {
+	rechargeCards,
 	categories,
 	orders,
 	storeOrders,
@@ -27,7 +30,8 @@ const json = {
 	hotSearch,
 	historySearch,
 	orderDetail,
-	giftCards
+	giftCards,
+	customerCoupons
 }
 
 export default (name, loading = true) => {

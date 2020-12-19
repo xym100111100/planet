@@ -23,11 +23,17 @@
 			"navigationStyle": "custom"
 		}
 	}, {
+		"path": "pages/coupons/coupons",
+		"style": {
+			"navigationBarTitleText": "星球卷"
+		}
+	}, 
+	{
 		"path": "pages/integrals/mall",
 		"style": {
 			"navigationBarTitleText": "星球商城"
 		}
-	}, {
+	},{
 		"path": "pages/integrals/detail",
 		"style": {
 			"navigationBarTitleText": ""
@@ -37,7 +43,13 @@
 		"style": {
 			"navigationBarTitleText": ""
 		}
-	}, {
+	}, 
+	{
+		"path": "pages/my/balance",
+		"style": {
+			"navigationBarTitleText": ""
+		}
+	},{
 		"path": "pages/my/mall",
 		"style": {}
 	}, {

@@ -27,12 +27,12 @@
 						<view class="value">63</view>
 						<view class="title">星球商城</view>
 					</navigator>
-					<view class="grid" hover-class="opacity-6">
+					<navigator class="grid" open-type="navigate" url="/pages/coupons/coupons">
 						<image src="/static/images/my/me_icon_quan.png"></image>
-						<view class="value">0</view>
+						<view class="value">63</view>
 						<view class="title">星球劵</view>
-					</view>
-					<navigator class="grid" open-type="navigate" url="/pages/my/wallet">
+					</navigator>
+					<navigator class="grid" open-type="navigate" url="/pages/my/balance">
 						<image src="/static/images/my/me_icon_wallet.png"></image>
 						<view class="value">0.00</view>
 						<view class="title">钱包</view>
