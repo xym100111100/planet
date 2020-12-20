@@ -25,7 +25,7 @@
 					<navigator class="grid" open-type="navigate" url="/pages/integrals/mall">
 						<image src="/static/images/my/me_icon_points.png"></image>
 						<view class="value">63</view>
-						<view class="title">星球商城</view>
+						<view class="title">积分商城</view>
 					</navigator>
 					<navigator class="grid" open-type="navigate" url="/pages/coupons/coupons">
 						<image src="/static/images/my/me_icon_quan.png"></image>
@@ -35,9 +35,9 @@
 					<navigator class="grid" open-type="navigate" url="/pages/my/balance">
 						<image src="/static/images/my/me_icon_wallet.png"></image>
 						<view class="value">0.00</view>
-						<view class="title">钱包</view>
+						<view class="title">余额</view>
 					</navigator>
-					<navigator class="grid" open-type="navigate" url="/pages/gifts/gifts">
+					<navigator class="grid" open-type="navigate" url="/pages/attendance/attendance">
 						<image src="/static/images/my/me_icon_gift_card.png"></image>
 						<view class="value">0</view>
 						<view class="title">每日签到</view>

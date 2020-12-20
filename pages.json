@@ -12,6 +12,11 @@
 			"disableScroll": true
 		}
 	},{
+            "path" : "pages/attendance/attendance",
+            "style" : {
+				"navigationStyle":"custom"
+			}
+        },{
 		"path": "pages/ranking/ranking",
 		"style": {
 			"navigationStyle": "custom",
@@ -31,7 +36,7 @@
 	{
 		"path": "pages/integrals/mall",
 		"style": {
-			"navigationBarTitleText": "星球商城"
+			"navigationBarTitleText": "积分商城"
 		}
 	},{
 		"path": "pages/integrals/detail",

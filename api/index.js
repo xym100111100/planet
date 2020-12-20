@@ -14,8 +14,13 @@ import orderDetail from './orderDetail.js'
 import giftCards from './giftCards.js'
 import customerCoupons from './customer-coupons.js'
 import rechargeCards from './rechargeCards'
-
+import attendanceList from './attendance-list.js'
+import customPoints from './custom-points.js'
+import todayAttendance from './today-attendance.js'
 const json = {
+	attendanceList,
+	customPoints,
+	todayAttendance,
 	rechargeCards,
 	categories,
 	orders,

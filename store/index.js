@@ -9,6 +9,7 @@ const store = new Vuex.Store({
 		userInfo: {},
 		isLogin: false,
 		orderType: 'takein',
+		member: {},
 		addresses: [{
 			"id": 1,
 			"user_id": 1,
@@ -26,6 +27,9 @@ const store = new Vuex.Store({
 		remark: '不打包'
 	},
 	mutations: {
+		SET_MEMBER(state, member) {
+			state.member = member
+		},
 		SET_ORDER_TYPE(state, orderType) {
 			state.orderType = orderType
 		},
