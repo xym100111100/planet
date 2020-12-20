@@ -37,9 +37,9 @@
 						<view class="info">
 							<!-- <view class="title">1张星球卷</view> -->
 							<view class="score">
-								<view class="value">1 </view>
+								<view class="value">{{product.integrals}} </view>
 								<view>个积分+</view>
-								<view class="value">10 </view>元
+								<view class="value">{{product.price}} </view>元
 							</view>
 						</view>
 					</view>

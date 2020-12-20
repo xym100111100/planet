@@ -60,7 +60,7 @@
 			<list-cell :padding="padding" :hover="false" last>
 				<view class="row">
 					<view class="label">购买介绍</view>
-					<view class="text">购买星球卷支付的金额在支付之日的第二天自动转到小程序余额中即可继续消费，不可当日消费与提现。</view>
+					<view class="text">需要有足够的积分和支付一定金额才能购买，每个用户每天只能购买一次，请核实选择购买数量。</view>
 				</view>
 			</list-cell>
 		</view>

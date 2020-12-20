@@ -23,7 +23,7 @@
 					  	<view class="font-size-sm font-weight-light">元</view>
 					  </view>
 					  <view class="d-flex align-items-center just-content-center font-size-sm font-weight-light" >
-						  赠送2星球卷
+						 {{item.desc}}
 					  </view>
 					
 				</view>
