@@ -9,7 +9,7 @@
 					<view class="font-size-extra-lg text-color-base font-weight-bold">0</view>
 					<view class="font-size-sm text-color-primary">充值记录</view>
 				</view>
-				<image src="/static/images/balance.png"  mode="widthFix"></image>
+				<image src="https://github.com/xym100111100/images/blob/main/balance.png?raw=true"  mode="widthFix"></image>
 			</view>
 			
 			<view class="font-size-lg text-color-base font-weight-bold" style="margin-bottom: 20rpx;">充值金额</view>

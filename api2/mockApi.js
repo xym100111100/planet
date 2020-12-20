@@ -83,6 +83,16 @@ const MockData = {
 			]
 		}
 	},
+	'getUserLabels':()=>{
+		return{
+			data:['小清新','话唠','逗比','衬衫控','仙气十足','我那么美','宫崎骏','夜猫子','韩剧fans','暖男','攻城狮','篮球'
+				
+			]
+		}
+		
+		
+		
+	}
 
 }
 
@@ -90,6 +100,7 @@ const MockData = {
 
 function MockApi(url, data) {
 	let res = MockData[url]
+	
 	if (res) {
 		return res(data)
 	}

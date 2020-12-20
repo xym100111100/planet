@@ -2,7 +2,7 @@
 	<view class="container">
 		<navbar-back-button></navbar-back-button>
 		<view class="header">
-			<image src="/static/images/attendance/bg.png" mode="scaleToFill"></image>
+			<image src="https://github.com/xym100111100/images/blob/main/attendance/bg.png?raw=true" mode="scaleToFill"></image>
 			<view class="user-box">
 				<view class="avatar">
 					<image src="https://wx.qlogo.cn/mmopen/vi_32/Hx7MFkCEmZVHziaTTiaHSiaCs4ApnH5CD0nYOhOg1nYUUMYtxMXkL6L4VL5icRfO5w4LGzW5ib0FZicwj2MficyYfZgCw/132"></image>
@@ -34,7 +34,7 @@
 		<modal custom :show="attendanceModalVisible">
 			<view class="attendance-modal">
 				<view class="modal-header">
-					<image src="/static/images/attendance/cup.png" mode="widthFix"></image>
+					<image src="https://github.com/xym100111100/images/blob/main/attendance/cup.png?raw=true" mode="widthFix"></image>
 				</view>
 				<view class="modal-content d-flex align-items-center just-content-center flex-column font-size-sm text-color-base">
 					<view>赠送的1积分已发到您的账户中</view>

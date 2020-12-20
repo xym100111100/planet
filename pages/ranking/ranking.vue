@@ -1,6 +1,10 @@
 <template>
 	<view class="container">
 		<view class="container-header">
+			<view :class="'label'+item.index" v-for="(item , index) in labels"  :key="index" >
+				{{item.title}}
+			</view>
+			
 			<view class="navbar">
 				<view type="default" plain class="talk-btn">
 				</view>
@@ -186,7 +190,11 @@
 				orders: [],
 				storeOrders: [],
 				kingList1:[],
-				kingList2:[]
+				kingList2:[],
+				labels:[
+					
+				]
+				
 			}
 		},
 		async onLoad() {},
@@ -198,10 +206,35 @@
 		created() {
 			this.getOrders()
 			this.getRankingList()
+			this.getUserLabels()
 		},
-
 		methods: {
+			async getUserLabels(){
+				let {
+					data = []
+				} = await this.$api2.request('getUserLabels')
+				 let indexArr = [0,1,2,3,4,5,6,7,8,9,10,11]
+				indexArr = this.shuffle(indexArr) 
+				data = data.map((item,index)=>{
+					return{
+						title:item,
+						index:indexArr[index]
+					}
+				})
+				
+				this.labels = this.shuffle(data)
+			},
+			shuffle(data){
+				let arr = [...data]
+				for (let i = 1; i < arr.length; i++) {
+				    const random = Math.floor(Math.random() * (i + 1));
+				    [arr[i], arr[random]] = [arr[random], arr[i]];
+				}
+				return arr;
+				 
+			},
 			async getRankingList() {
+				
 				let {
 					data = []
 				} = await this.$api2.request('/ranking/getRankingList')
@@ -243,6 +276,111 @@
 		height: 580rpx;
 		background-color: #DBA871;
 		position: relative;
+		.label0{
+			position: absolute;
+			text-align: center;
+			color: #eacdcd;
+			top:30rpx;
+			left:5rpx;
+			width:100rpx;
+		}
+		.label1{
+			position: absolute;
+			text-align: center;
+			color: #eacdcd;
+			top:210rpx;
+			left:500rpx;
+			width:100rpx;
+		}
+		.label2{
+			position: absolute;
+			text-align: center;
+			color: #eacdcd;
+			top:150rpx;
+			left:107rpx;
+			width:12rpx;
+		}
+		.label2{
+			position: absolute;
+			text-align: center;
+			color: #eacdcd;
+			top:130rpx;
+			left:170rpx;
+			width:200rpx;
+		}
+		.label3{
+			position: absolute;
+			text-align: center;
+			color: #eacdcd;
+			top:160rpx;
+			left:600rpx;
+			width:200rpx;
+		}
+		.label4{
+			position: absolute;
+			text-align: center;
+			color: #eacdcd;
+			top:101rpx;
+			left:70rpx;
+			width:60rpx;
+		}
+		.label5{
+			position: absolute;
+			text-align: center;
+			color: #eacdcd;
+			top:1rpx;
+			left:667rpx;
+			width:10rpx;
+		}
+		.label6{
+			position: absolute;
+			text-align: center;
+			color: #eacdcd;
+			top:-11rpx;
+			left:227rpx;
+			width:100rpx;
+		}
+		.label7{
+			position: absolute;
+			text-align: center;
+			color: #eacdcd;
+			top:120rpx;
+			left:417rpx;
+			width:100rpx;
+		}
+		.label8{
+			position: absolute;
+			text-align: center;
+			color: #eacdcd;
+			top:182rpx;
+			left:-20rpx;
+			width:100rpx;
+		}
+		.label9{
+			position: absolute;
+			text-align: center;
+			color: #eacdcd;
+			top:150rpx;
+			left:277rpx;
+			width:100rpx;
+		}
+		.label10{
+			position: absolute;
+			text-align: center;
+			color: #eacdcd;
+			top:40rpx;
+			left:387rpx;
+			width:10rpx;
+		}
+		.label11{
+			position: absolute;
+			text-align: center;
+			color: #eacdcd;
+			top:10rpx;
+			left:517rpx;
+			width:100rpx;
+		}
+		
 		.tags{
 			position: absolute;
 			right: 20rpx;
@@ -260,7 +398,7 @@
 			height: calc(44px + var(--status-bar-height));
 
 			display: flex;
-			background-color: #DBA871;
+			
 
 			.talk-btn {
 				
@@ -555,46 +693,9 @@
 				}
 			}
 
-			.images {
-				display: flex;
-				padding: 30rpx 0;
 
-				image {
-					flex-shrink: 0;
-					width: 150rpx;
-					height: 112.5rpx;
-				}
-			}
 
-			.info {
-				display: flex;
-				align-items: center;
-				margin-bottom: 30rpx;
-
-				.left {
-					flex: 1;
-					display: flex;
-					flex-direction: column;
-					font-size: $font-size-base;
-					color: $text-color-grey;
-				}
-
-				.right {
-					font-size: $font-size-lg;
-					color: $text-color-base;
-				}
-			}
-
-			.action {
-				display: flex;
-				justify-content: flex-end;
-				align-items: center;
-
-				button {
-					margin-left: 30rpx;
-					font-size: $font-size-sm;
-				}
-			}
+			
 		}
 	}
 </style>
