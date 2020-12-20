@@ -296,7 +296,7 @@
 			width:120rpx;
 		}
 		.label2{
-			position: absolute;
+			position: absolute; 
 			text-align: center;  
 			color: #eacdcd;
 			top:120rpx;
