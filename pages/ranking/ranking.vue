@@ -289,23 +289,18 @@
 			text-align: center;
 			color: #eacdcd;
 			top:210rpx;
+			/* #ifdef H5 */
+			top:180rpx;
+			/* #endif */
 			left:500rpx;
-			width:100rpx;
+			width:120rpx;
 		}
 		.label2{
 			position: absolute;
 			text-align: center;
 			color: #eacdcd;
-			top:150rpx;
-			left:107rpx;
-			width:12rpx;
-		}
-		.label2{
-			position: absolute;
-			text-align: center;
-			color: #eacdcd;
-			top:130rpx;
-			left:170rpx;
+			top:120rpx;
+			left:180rpx;
 			width:200rpx;
 		}
 		.label3{
@@ -338,7 +333,7 @@
 			color: #eacdcd;
 			top:-11rpx;
 			left:227rpx;
-			width:100rpx;
+			width:10rpx;
 		}
 		.label7{
 			position: absolute;
@@ -362,7 +357,7 @@
 			color: #eacdcd;
 			top:150rpx;
 			left:277rpx;
-			width:100rpx;
+			width:120rpx;
 		}
 		.label10{
 			position: absolute;
