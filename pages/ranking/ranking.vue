@@ -297,7 +297,7 @@
 		}
 		.label2{
 			position: absolute;
-			text-align: center;
+			text-align: center; 
 			color: #eacdcd;
 			top:120rpx;
 			left:180rpx;
