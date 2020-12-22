@@ -14,7 +14,8 @@
 	},{
             "path" : "pages/attendance/attendance",
             "style" : {
-				"navigationStyle":"custom"
+				"navigationBarTitleText": "签到"
+				
 			}
         },{
 		"path": "pages/ranking/ranking",

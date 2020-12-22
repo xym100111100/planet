@@ -1,6 +1,6 @@
 <template>
 	<view class="container">
-		<navbar-back-button></navbar-back-button>
+		
 		<view class="header">
 			<image src="https://github.com/xym100111100/images/blob/main/attendance/bg.png?raw=true" mode="scaleToFill"></image>
 			<view class="user-box">
@@ -12,7 +12,7 @@
 				   umbrella
 				</view>
 				<view>
-					<view class="tags mb-10">
+					<view  @tap="showSearch = true" class="tags mb-10">
 						好友签到
 					</view>
 					<view class="tags">
@@ -45,6 +45,8 @@
 				</view>
 			</view>
 		</modal>
+		<search :show="showSearch" :categories="categories" @hide="showSearch=false" @choose="showProductDetailModal"></search>
+		
 	</view>
 </template>
 
@@ -55,15 +57,24 @@
 	import navbarBackButton from '@/components/navbar-back-button'
 	import uniCalendar from '@/pages/attendance/uni-calendar/uni-calendar'
 	import modal from '@/components/modal/modal'
+	import Search from './components/search/search.vue'
+	
 
 	export default {
 		components: {
 			navbarBackButton,
 			uniCalendar,
-			modal
+			modal,
+			Search
 		},
 		data() {
 			return {
+				categories: [{
+					price: "32",
+					name: "芝芝莓莓 ®",
+					id: 932
+				}],
+				showSearch: false,
 				customPoints: {},
 				attendanceModalVisible: false,
 				attendanceList: [],
@@ -73,6 +84,8 @@
 			}
 		},
 		async onLoad() {
+			// this.categories = await this.$api('categories')
+			// console.log(this.categories)	
 			this.customPoints = await this.$api('customPoints')
 
 			this.attendanceList = await this.$api('attendanceList')
@@ -96,7 +109,7 @@
 <style lang="scss" scoped>
 	.header {
 		width: 100%;
-		height: 33.333vh;
+		height: 330rpx;
 		position: relative;
 
 		image {
