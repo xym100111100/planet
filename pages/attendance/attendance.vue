@@ -45,7 +45,7 @@
 				</view>
 			</view>
 		</modal>
-		<search :show="showSearch" :categories="categories" @hide="showSearch=false" @choose="showProductDetailModal"></search>
+		<search :show="showSearch" :friends="friends" @hide="showSearch=false" @choose="showfirendDetailModal"></search>
 		
 	</view>
 </template>
@@ -69,7 +69,7 @@
 		},
 		data() {
 			return {
-				categories: [{
+				friends: [{
 					price: "32",
 					name: "芝芝莓莓 ®",
 					id: 932
@@ -83,9 +83,9 @@
 				endDate: ''
 			}
 		},
-		async onLoad() {
-			// this.categories = await this.$api('categories')
-			// console.log(this.categories)	
+		async onLoad() { 
+			// this.friends = await this.$api('friends')
+			// console.log(this.friends)	
 			this.customPoints = await this.$api('customPoints')
 
 			this.attendanceList = await this.$api('attendanceList')
@@ -101,6 +101,9 @@
 		methods: {
 			attendance() {
 				this.attendanceModalVisible = true
+			},
+			showfirendDetailModal(val){
+				
 			}
 		}
 	}

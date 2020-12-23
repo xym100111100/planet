@@ -83,6 +83,7 @@
 			}
 		},
 		async created() {
+			console.log("dddd")
 			this.hotSearch = await this.$api('hotSearch')
 			this.historySearch = await this.$api('historySearch')
 		},

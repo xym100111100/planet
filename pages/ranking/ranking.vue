@@ -1,10 +1,10 @@
 <template>
 	<view class="container">
 		<view class="container-header">
-			<view :class="'label'+item.index" v-for="(item , index) in labels"  :key="index" >
+			<view :class="'label'+item.index" v-for="(item , index) in labels" :key="index">
 				{{item.title}}
 			</view>
-			
+
 			<view class="navbar">
 				<view type="default" plain class="talk-btn">
 				</view>
@@ -27,7 +27,7 @@
 						2
 					</view>
 					<view class="item-text">
-						本周助力好友
+						本周点亮
 					</view>
 
 				</view>
@@ -43,7 +43,7 @@
 						20
 					</view>
 					<view class="item-text">
-						本周助力好友
+						本周点亮
 					</view>
 				</view>
 				<view class="item item-right ">
@@ -58,20 +58,20 @@
 						3
 					</view>
 					<view class="item-text">
-						本周助力好友
+						本周点亮
 					</view>
 				</view>
 			</view>
 			<view class="tags">
-					<view class="item" style="border-bottom: solid 1rpx #dba871;">
-						历史榜单
-					</view>
-					<view class="item" style="border-bottom: solid 1rpx #dba871;">
-						上榜攻略
-					</view>
-					<view class="item"  >
-						获得奖励
-					</view>
+				<view class="item" style="border-bottom: solid 1rpx #dba871;">
+					历史榜单
+				</view>
+				<view class="item" style="border-bottom: solid 1rpx #dba871;">
+					上榜攻略
+				</view>
+				<view class="item">
+					上榜奖励
+				</view>
 			</view>
 		</view>
 		<swiper :current="tabIndex" :duration="300" class="swiper" :show-scrollbar="false">
@@ -87,26 +87,22 @@
 								<view class="header">
 
 									<view class="flex-fill font-size-medium header-left  ">
-										<image :src="item.portrait"
-										 class="avatar"></image>
+										<image :src="item.portrait" class="avatar"></image>
 										<text>{{item.name }}</text>
 									</view>
 									<view class="status">
 										<view>
-											<view>
-												获得<text class="back">{{item.backMoney}}</text> ￥
-											</view>
-											<view class="total">
-												购买{{item.payMoney}}￥
-											</view>
+											本周点亮<text class="back">{{item.backMoney}}</text>
+										</view>
+										<view class="icon">
+											<image src="/static/images/common/star.png"> </image>
 										</view>
 									</view>
 
 								</view>
 								<view class="friends">
 									<view class="friends-list">
-										<image v-for="(img ,index) in item.friendsList"  :key="index"  class="list-img" :src="img"
-										 mode=""></image>
+										<image v-for="(img ,index) in item.friendsList" :key="index" class="list-img" :src="img" mode=""></image>
 									</view>
 								</view>
 
@@ -125,9 +121,9 @@
 
 			</swiper-item>
 			<!-- 星球榜 end -->
-			<!-- 好友榜 begin -->
+			<!-- 星球榜 begin -->
 			<swiper-item @touchmove.stop="handleSwiperItemChange">
-				<!-- 好友榜 begin -->
+				<!-- 星球榜 begin -->
 
 				<scroll-view scroll-y="true" class="orders-scroll">
 					<view class="wrapper">
@@ -137,31 +133,27 @@
 									{{index +1}}
 								</view>
 								<view class="header">
-				
+
 									<view class="flex-fill font-size-medium header-left  ">
-										<image :src="item.portrait"
-										 class="avatar"></image>
+										<image :src="item.portrait" class="avatar"></image>
 										<text>{{item.name }}</text>
 									</view>
 									<view class="status">
 										<view>
-											<view>
-												获得<text class="back">{{item.backMoney}}</text> ￥
-											</view>
-											<view class="total">
-												购买{{item.payMoney}}￥
-											</view>
+											本周点亮<text class="back">{{item.backMoney}}</text>
+										</view>
+										<view class="icon">
+											<image src="/static/images/common/star.png"> </image>
 										</view>
 									</view>
-				
+
 								</view>
 								<view class="friends">
 									<view class="friends-list">
-										<image v-for="(img ,index) in item.friendsList"  :key="index"  class="list-img" :src="img"
-										 mode=""></image>
+										<image v-for="(img ,index) in item.friendsList" :key="index" class="list-img" :src="img" mode=""></image>
 									</view>
 								</view>
-				
+
 							</navigator>
 						</view>
 						<!-- <view class="no-order-content">
@@ -189,12 +181,12 @@
 				orderMenuIndex: 0,
 				orders: [],
 				storeOrders: [],
-				kingList1:[],
-				kingList2:[],
-				labels:[
-					
+				kingList1: [],
+				kingList2: [],
+				labels: [
+
 				]
-				
+
 			}
 		},
 		async onLoad() {},
@@ -209,37 +201,37 @@
 			this.getUserLabels()
 		},
 		methods: {
-			async getUserLabels(){
+			async getUserLabels() {
 				let {
 					data = []
 				} = await this.$api2.request('getUserLabels')
-				 let indexArr = [0,1,2,3,4,5,6,7,8,9,10,11]
-				indexArr = this.shuffle(indexArr) 
-				data = data.map((item,index)=>{
-					return{
-						title:item,
-						index:indexArr[index]
+				let indexArr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+				indexArr = this.shuffle(indexArr)
+				data = data.map((item, index) => {
+					return {
+						title: item,
+						index: indexArr[index]
 					}
 				})
-				
+
 				this.labels = this.shuffle(data)
 			},
-			shuffle(data){
+			shuffle(data) {
 				let arr = [...data]
 				for (let i = 1; i < arr.length; i++) {
-				    const random = Math.floor(Math.random() * (i + 1));
-				    [arr[i], arr[random]] = [arr[random], arr[i]];
+					const random = Math.floor(Math.random() * (i + 1));
+					[arr[i], arr[random]] = [arr[random], arr[i]];
 				}
 				return arr;
-				 
+
 			},
 			async getRankingList() {
-				
+
 				let {
 					data = []
 				} = await this.$api2.request('/ranking/getRankingList')
-				this.kingList1  = data
-				this.kingList2  = data
+				this.kingList1 = data
+				this.kingList2 = data
 			},
 			async lower(e) {
 				console.log(e)
@@ -273,130 +265,143 @@
 	}
 
 	.container-header {
-		height: 580rpx;
+		height: 560rpx;
 		background-color: #DBA871;
 		position: relative;
-		.label0{
+
+		.label0 {
 			position: absolute;
 			text-align: center;
 			color: #eacdcd;
-			top:30rpx;
-			left:5rpx;
-			width:100rpx;
+			top: 30rpx;
+			left: 5rpx;
+			width: 100rpx;
 		}
-		.label1{
+
+		.label1 {
 			position: absolute;
 			text-align: center;
 			color: #eacdcd;
-			top:210rpx;
+			top: 200rpx;
 			/* #ifdef H5 */
-			top:180rpx;
+			top: 180rpx;
 			/* #endif */
-			left:500rpx;
-			width:120rpx;
+			left: 500rpx;
+			width: 120rpx;
 		}
-		.label2{
-			position: absolute; 
-			text-align: center;  
-			color: #eacdcd;
-			top:120rpx;
-			left:180rpx;
-			width:200rpx;
-		}
-		.label3{
+
+		.label2 {
 			position: absolute;
 			text-align: center;
 			color: #eacdcd;
-			top:160rpx;
-			left:600rpx;
-			width:200rpx;
+			top: 120rpx;
+			left: 190rpx;
+			width: 200rpx;
 		}
-		.label4{
+
+		.label3 {
 			position: absolute;
 			text-align: center;
 			color: #eacdcd;
-			top:101rpx;
-			left:70rpx;
-			width:60rpx;
+			top: 160rpx;
+			left: 600rpx;
+			width: 200rpx;
 		}
-		.label5{
+
+		.label4 {
 			position: absolute;
 			text-align: center;
 			color: #eacdcd;
-			top:1rpx;
-			left:667rpx;
-			width:10rpx;
+			top: 101rpx;
+			left: 70rpx;
+			width: 60rpx;
 		}
-		.label6{
+
+		.label5 {
 			position: absolute;
 			text-align: center;
 			color: #eacdcd;
-			top:-11rpx;
-			left:227rpx;
-			width:10rpx;
+			top: 1rpx;
+			left: 667rpx;
+			width: 10rpx;
 		}
-		.label7{
+
+		.label6 {
 			position: absolute;
 			text-align: center;
 			color: #eacdcd;
-			top:120rpx;
-			left:417rpx;
-			width:100rpx;
+			top: -11rpx;
+			left: 227rpx;
+			width: 10rpx;
 		}
-		.label8{
+
+		.label7 {
 			position: absolute;
 			text-align: center;
 			color: #eacdcd;
-			top:182rpx;
-			left:-20rpx;
-			width:100rpx;
+			top: 120rpx;
+			left: 417rpx;
+			width: 100rpx;
 		}
-		.label9{
+
+		.label8 {
 			position: absolute;
 			text-align: center;
 			color: #eacdcd;
-			top:150rpx;
-			left:277rpx;
-			width:120rpx;
+			top: 182rpx;
+			left: -20rpx;
+			width: 100rpx;
 		}
-		.label10{
+
+		.label9 {
 			position: absolute;
 			text-align: center;
 			color: #eacdcd;
-			top:40rpx;
-			left:387rpx;
-			width:10rpx;
+			top: 150rpx;
+			left: 277rpx;
+			width: 120rpx;
 		}
-		.label11{
+
+		.label10 {
 			position: absolute;
 			text-align: center;
 			color: #eacdcd;
-			top:10rpx;
-			left:517rpx;
-			width:100rpx;
+			top: 40rpx;
+			left: 387rpx;
+			width: 10rpx;
 		}
-		
-		.tags{
+
+		.label11 {
+			position: absolute;
+			text-align: center;
+			color: #eacdcd;
+			top: 10rpx;
+			left: 517rpx;
+			width: 100rpx;
+		}
+
+		.tags {
 			position: absolute;
 			right: 20rpx;
 			bottom: -300rpx;
 			z-index: 1000;
-			 background: rgba(0, 0, 0 ,0.2);
-			 color: white;
-			.item{
-				
-				 padding: 20rpx;
+			background: rgba(0, 0, 0, 0.2);
+			color: white;
+
+			.item {
+
+				padding: 20rpx;
 			}
 		}
-			
+
 		.navbar {
-			height: calc(44px + var(--status-bar-height));
+			height: calc(74px + var(--status-bar-height));
 
 			display: flex;
-			
+
 
 			.talk-btn {
-				
+
 				height: 32px;
 				margin-left: 10px;
 				margin-top: 26px;
@@ -408,7 +413,7 @@
 				justify-content: center;
 				font-size: $font-size-sm !important;
 				padding: 0 20rpx;
-			
+
 
 
 				image {
@@ -622,7 +627,7 @@
 				color: $text-color-assist;
 				position: absolute;
 				left: 25rpx;
-				top: 48%;
+				top: 40%;
 				font-size: $font-size-lg;
 			}
 
@@ -640,9 +645,9 @@
 					text-align: center;
 
 					image {
-						width: 30rpx;
-						height: 30rpx;
-						margin-left: $spacing-row-sm;
+						width: 39rpx;
+						height: 39rpx;
+
 					}
 
 					.back {
@@ -654,6 +659,15 @@
 					.total {
 						padding-top: 10rpx;
 						color: $text-color-assist;
+					}
+
+					.icon {
+						height: 42rpx;
+						display: flex;
+						align-items: flex-end;
+						justify-content: center;
+						text-align: center;
+						width: 42rpx;
 					}
 
 
@@ -690,7 +704,7 @@
 
 
 
-			
+
 		}
 	}
 </style>
