@@ -476,6 +476,7 @@
 					overflow: hidden;
 					text-overflow: ellipsis;
 					white-space: nowrap;
+					font-size: $font-size-medium;
 				}
 
 				.item-count {
