@@ -141,7 +141,16 @@
 		"style": {
 			"navigationBarTitleText": "星球会员权益"
 		}
-	}],
+	}    ,{
+            "path" : "pages/attendance/rule/rule",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "签到规则",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
 	"tabBar": {
 		"color": "#999999",
 		"selectedColor": "#343434",

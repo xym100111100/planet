@@ -1,6 +1,6 @@
 <template>
 	<view class="container">
-		
+
 		<view class="header">
 			<image src="https://github.com/xym100111100/images/blob/main/attendance/bg.png?raw=true" mode="scaleToFill"></image>
 			<view class="user-box">
@@ -9,15 +9,18 @@
 				</view>
 				<view class="nickname">
 					<!-- {{ member.nickname }} -->
-				   umbrella
+					umbrella
 				</view>
 				<view>
-					<view  @tap="showSearch = true" class="tags mb-10">
+					<view @tap="showSearch = true" class="tags mb-10">
 						好友签到
 					</view>
-					<view class="tags">
-						签到规则
-					</view>
+					<navigator open-type="navigate" url="/pages/attendance/rule/rule" hover-class="none">
+						<view class="tags">
+							签到规则
+						</view>
+					</navigator>
+
 				</view>
 			</view>
 		</view>
@@ -46,7 +49,7 @@
 			</view>
 		</modal>
 		<search :show="showSearch" :friends="friends" @hide="showSearch=false" @choose="showfirendDetailModal"></search>
-		
+
 	</view>
 </template>
 
@@ -58,7 +61,7 @@
 	import uniCalendar from '@/pages/attendance/uni-calendar/uni-calendar'
 	import modal from '@/components/modal/modal'
 	import Search from './components/search/search.vue'
-	
+
 
 	export default {
 		components: {
@@ -83,7 +86,7 @@
 				endDate: ''
 			}
 		},
-		async onLoad() { 
+		async onLoad() {
 			// this.friends = await this.$api('friends')
 			// console.log(this.friends)	
 			this.customPoints = await this.$api('customPoints')
@@ -102,8 +105,8 @@
 			attendance() {
 				this.attendanceModalVisible = true
 			},
-			showfirendDetailModal(val){
-				
+			showfirendDetailModal(val) {
+
 			}
 		}
 	}

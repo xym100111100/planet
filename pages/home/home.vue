@@ -45,7 +45,7 @@
 						<view class="neutra-font">1</view>
 					</view>
 					<view class="tips">
-						用于每次消费后抽取再来一杯
+						用于每次消后点亮再来一杯
 					</view>
 				</navigator>
 				<navigator class="my-code" open-type="navigate" url="/pages/my/code" hover-class="none">
