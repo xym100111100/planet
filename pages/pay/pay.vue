@@ -20,7 +20,7 @@
 							<image :src="item.image" class="pro-img" v-for="(item, index) in cart" :key="index"></image>
 						</view>
 					</scroll-view>
-					<view class="flex-shrink-0 ml-20">共{{ cartNum }}件</view>				
+					<view class="flex-shrink-0 ml-20">共{{ cartNum }}件</view>
 				</view>
 			</list-cell>
 			<list-cell arrow last>
@@ -58,20 +58,50 @@
 			<view class="mr-30">
 				合计：<text class="font-size-lg font-weight-bold">￥{{ cartAmount }}</text>
 			</view>
-			<button type="primary">支付</button>
+			<button type="primary" @tap="showModel = true">支付</button>
 		</view>
+
+		<modal custom @cancel="showModel = false" :maskClosable="true" :show="showModel">
+			<view class="model">
+				<view class="model-header">
+					<image src="../../static/images/order/weixin-pay.png" style="width: 30rpx; height: 30rpx;margin-right: 10rpx;"
+					 mode=""></image>
+					<view>
+						已支付
+					</view>
+				</view>
+				<view class="tips">
+					星球值已满,赶快点亮星球获取免单吧
+				</view>
+				<view class="">
+					<image src="../../static/images/common/star.png" style="width: 160rpx; height: 160rpx;" mode=""></image>
+				</view>
+				<view class="btn">
+					<view class="btn-item ">
+						分享好友
+					</view>
+					<view class="btn-item light">
+						直接点亮
+					</view>
+				</view>
+			</view>
+		</modal>
+
 	</view>
 </template>
 
 <script>
 	import listCell from '@/components/list-cell/list-cell.vue'
-	
+	import modal from '@/components/modal/modal'
+
 	export default {
 		components: {
-			listCell
+			listCell,
+			modal
 		},
 		data() {
 			return {
+				showModel: false,
 				cart: uni.getStorageSync('cart'),
 			}
 		},
@@ -94,13 +124,13 @@
 		height: auto;
 		padding-bottom: 120rpx;
 	}
-	
+
 	.pro-img {
 		width: 120rpx;
 		height: 90rpx;
 		flex-shrink: 0;
 	}
-	
+
 	.coupon-label {
 		background-color: $color-primary;
 		color: #FFFFFF;
@@ -111,13 +141,13 @@
 		margin-left: 10rpx;
 		text-align: center;
 	}
-	
+
 	.wx-pay-icon {
 		width: 40rpx;
 		height: 40rpx;
 		margin-right: 10rpx;
 	}
-	
+
 	.footer {
 		background-color: #FFFFFF;
 		z-index: 10;
@@ -129,7 +159,7 @@
 		display: flex;
 		justify-content: flex-end;
 		align-items: center;
-		
+
 		button {
 			width: 250rpx;
 			text-align: center;
@@ -138,6 +168,46 @@
 			line-height: 100rpx;
 			border-radius: 0 !important;
 			font-size: $font-size-lg;
+		}
+	}
+
+	.model {
+		text-align: center;
+
+		.model-header {
+			display: flex;
+			height: 45rpx;
+			justify-content: center;
+			align-items: center;
+			color: #45c820;
+			margin-bottom: 23rpx;
+
+		}
+
+		.tips {
+			font-weight: 700;
+			font-size: 28rpx;
+		}
+
+		.btn {
+			display: flex;
+			justify-content: space-around;
+			margin-top: 15rpx;
+
+			.btn-item {
+				border-radius: 10rpx;
+				border: solid 1rpx #DBA871;
+				height: 62rpx;
+				width: 155rpx;
+				line-height: 62rpx;
+				font-size: 28rpx;
+			}
+
+			.light {
+				background: #DBA871;
+				color: white;
+
+			}
 		}
 	}
 </style>
