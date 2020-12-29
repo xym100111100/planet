@@ -272,7 +272,7 @@
 		.label0 {
 			position: absolute;
 			text-align: center;
-			color: #eacdcd;
+			color: #e1baba;
 			top: 30rpx;
 			left: 5rpx;
 			width: 100rpx;
@@ -281,7 +281,7 @@
 		.label1 {
 			position: absolute;
 			text-align: center;
-			color: #eacdcd;
+			color: #e1baba;
 			top: 200rpx;
 			/* #ifdef H5 */
 			top: 180rpx;
@@ -293,7 +293,7 @@
 		.label2 {
 			position: absolute;
 			text-align: center;
-			color: #eacdcd;
+			color: #e1baba;
 			top: 120rpx;
 			left: 190rpx;
 			width: 200rpx;
@@ -302,7 +302,7 @@
 		.label3 {
 			position: absolute;
 			text-align: center;
-			color: #eacdcd;
+			color: #e1baba;
 			top: 160rpx;
 			left: 600rpx;
 			width: 200rpx;
@@ -311,7 +311,7 @@
 		.label4 {
 			position: absolute;
 			text-align: center;
-			color: #eacdcd;
+			color: #e1baba;
 			top: 101rpx;
 			left: 70rpx;
 			width: 60rpx;
@@ -320,7 +320,7 @@
 		.label5 {
 			position: absolute;
 			text-align: center;
-			color: #eacdcd;
+			color: #e1baba;
 			top: 1rpx;
 			left: 667rpx;
 			width: 10rpx;
@@ -329,7 +329,7 @@
 		.label6 {
 			position: absolute;
 			text-align: center;
-			color: #eacdcd;
+			color: #e1baba;
 			top: -11rpx;
 			left: 227rpx;
 			width: 10rpx;
@@ -338,7 +338,7 @@
 		.label7 {
 			position: absolute;
 			text-align: center;
-			color: #eacdcd;
+			color: #e1baba;
 			top: 120rpx;
 			left: 417rpx;
 			width: 100rpx;
@@ -347,7 +347,7 @@
 		.label8 {
 			position: absolute;
 			text-align: center;
-			color: #eacdcd;
+			color: #e1baba;
 			top: 182rpx;
 			left: -20rpx;
 			width: 100rpx;
@@ -356,7 +356,7 @@
 		.label9 {
 			position: absolute;
 			text-align: center;
-			color: #eacdcd;
+			color: #e1baba;
 			top: 150rpx;
 			left: 277rpx;
 			width: 120rpx;
@@ -365,7 +365,7 @@
 		.label10 {
 			position: absolute;
 			text-align: center;
-			color: #eacdcd;
+			color: #e1baba;
 			top: 40rpx;
 			left: 387rpx;
 			width: 10rpx;
@@ -374,7 +374,7 @@
 		.label11 {
 			position: absolute;
 			text-align: center;
-			color: #eacdcd;
+			color: #e1baba;
 			top: 10rpx;
 			left: 517rpx;
 			width: 100rpx;

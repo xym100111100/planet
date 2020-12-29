@@ -277,7 +277,10 @@
 				view.fields({
 					size: true
 				}, data => {
-					h += Math.floor(data.height)
+					if(data && data.height){
+						h += Math.floor(data.height)
+					}
+					
 				}).exec()
 				
 				this.categories.forEach(item => {
@@ -286,7 +289,10 @@
 						size: true
 					}, data => {
 						item.top = h
-						h += Math.floor(data.height)
+						if(data && data.height){
+								h += Math.floor(data.height)
+						}
+					
 						item.bottom = h
 					}).exec()
 				})
