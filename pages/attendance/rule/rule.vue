@@ -1,6 +1,6 @@
 <template>
 	<view>
-		sss
+		签到规则
 	</view>
 </template>
 

@@ -150,6 +150,15 @@
             }
             
         }
+        ,{
+            "path" : "pages/my/label",
+            "style" :                                                                                    
+            {
+               "navigationBarTitleText": "",
+               "navigationStyle": "custom"
+            }
+            
+        }
     ],
 	"tabBar": {
 		"color": "#999999",

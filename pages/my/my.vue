@@ -132,10 +132,10 @@
 				<view class="subtitle">获得免费奶茶与修改整个星球主题权力</view>
 			</view>
 		</list-cell>
-		<list-cell hover arrow>
-			<view class="list-cell-wrapper">
-				<view view="title">兑换中心</view>
-				<view class="subtitle">兑换星球会员、喜茶券和阿喜有礼卡</view>
+		<list-cell @tap="openLabel" hover arrow>
+			<view class="list-cell-wrapper"   >
+				<view view="title">个性标签</view>
+				<view class="subtitle">星球排行榜霸屏幕展示</view>
 			</view>
 		</list-cell>
 		<list-cell hover arrow>
@@ -204,6 +204,12 @@
 			openMember() {
 				uni.navigateTo({
 					url: '/pages/my/member'
+				})
+			},
+			openLabel() {
+				
+				uni.navigateTo({
+					url: '/pages/my/label'
 				})
 			},
 			myCode() {
