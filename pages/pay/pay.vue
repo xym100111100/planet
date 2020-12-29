@@ -80,7 +80,7 @@
 					<view class="btn-item ">
 						分享好友
 					</view>
-					<view class="btn-item light">
+					<view @tap="openLight" class="btn-item light">
 						直接点亮
 					</view>
 				</view>
@@ -114,6 +114,16 @@
 			},
 			remark() {
 				return this.$store.state.remark
+			}
+		},
+		methods: {
+			openLight() {
+				this.showModel = false
+				this.$nextTick(() => {
+					uni.navigateTo({
+						url: '/pages/task-center/task-center'
+					})
+				})
 			}
 		}
 	}

@@ -159,6 +159,15 @@
             }
             
         }
+        ,{
+            "path" : "pages/light/light",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"tabBar": {
 		"color": "#999999",
