@@ -66,7 +66,7 @@
 				<view class="model-header">
 					<image src="../../static/images/order/weixin-pay.png" style="width: 30rpx; height: 30rpx;margin-right: 10rpx;"
 					 mode=""></image>
-					<view>
+					<view class="font-size-lg" >
 						已支付
 					</view>
 				</view>
@@ -121,7 +121,7 @@
 				this.showModel = false
 				this.$nextTick(() => {
 					uni.navigateTo({
-						url: '/pages/task-center/task-center'
+						url: '/pages/light/light'
 					})
 				})
 			}
@@ -196,7 +196,7 @@
 
 		.tips {
 			font-weight: 700;
-			font-size: 28rpx;
+			font-size: 30rpx;
 		}
 
 		.btn {
@@ -207,10 +207,10 @@
 			.btn-item {
 				border-radius: 10rpx;
 				border: solid 1rpx #DBA871;
-				height: 62rpx;
+				height: 70rpx;
 				width: 155rpx;
-				line-height: 62rpx;
-				font-size: 28rpx;
+				line-height: 70rpx;
+				font-size: 30rpx;
 			}
 
 			.light {

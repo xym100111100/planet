@@ -126,10 +126,10 @@
 		</view> -->
 		<!-- 开通礼包 end -->
 		
-		<list-cell hover arrow >
+		<list-cell hover arrow @tap="goPage('/pages/my/theme/theme')"  >
 			<view class="list-cell-wrapper">
-				<view view="title">星球主题</view>
-				<view class="subtitle">获得免费奶茶与修改整个星球主题权力</view>
+				<view view="title">主题大战</view>
+				<view class="subtitle">每周五奶茶日免费获得4杯任意奶茶</view>
 			</view>
 		</list-cell>
 		<list-cell @tap="openLabel" hover arrow>
@@ -194,6 +194,12 @@
 			info() {
 				uni.navigateTo({
 					url: '/pages/my/info'
+				})
+			},
+			goPage(url){
+				
+				uni.navigateTo({
+					url: url
 				})
 			},
 			taskCenter() {
