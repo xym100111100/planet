@@ -17,7 +17,9 @@ import rechargeCards from './rechargeCards'
 import attendanceList from './attendance-list.js'
 import customPoints from './custom-points.js'
 import todayAttendance from './today-attendance.js'
+import getRankingList from './ranking.js'
 const json = {
+	getRankingList,
 	attendanceList,
 	customPoints,
 	todayAttendance,
@@ -40,6 +42,7 @@ const json = {
 }
 
 export default (name, loading = true) => {
+	
 	if(loading) {
 		uni.showLoading()
 	}

@@ -14,22 +14,18 @@
 					<view class="title">
 						<image :src="orderType == 'takein' ? 
 								'/static/images/common/star_normal.png' : 
-								'/static/images/order/order_icon_address.png'" 
-								class="left-icon" />
+								'/static/images/order/order_icon_address.png'"
+						 class="left-icon" />
 						<!-- 为了测试方便，这里使用静态店铺数据 -->
 						<view class="address">{{ orderType == 'takeout' ? address.complete_address : '中心城店' }}</view>
 						<image src="/static/images/common/black_arrow_right.png" class="right-icon"></image>
 					</view>
 					<!-- 外卖&自取switch begin -->
 					<view class="buttons">
-						<button type="default" class="button" 
-								:class="{active: orderType == 'takein'}" plain 
-								hover-class="none" @tap="switchOrderType">
+						<button type="default" class="button" :class="{active: orderType == 'takein'}" plain hover-class="none" @tap="switchOrderType">
 							自取
 						</button>
-						<button type="default" class="button" 
-								:class="{active: orderType == 'takeout'}" plain 
-								hover-class="none" @tap="switchOrderType">
+						<button type="default" class="button" :class="{active: orderType == 'takeout'}" plain hover-class="none" @tap="switchOrderType">
 							外卖
 						</button>
 					</view>
@@ -58,8 +54,8 @@
 			<!-- 左侧菜单 begin -->
 			<scroll-view class="menu-bar" scroll-y scroll-with-animation>
 				<view class="wrapper">
-					<view class="menu-item" @tap="handleMenuSelected(category.id)" 
-						  :class="{active: currentCategoryId == category.id}" v-for="(category, index) in categories" :key="index">
+					<view class="menu-item" @tap="handleMenuSelected(category.id)" :class="{active: currentCategoryId == category.id}"
+					 v-for="(category, index) in categories" :key="index">
 						<image :src="category.category_image_url" class="image" mode="widthFix"></image>
 						<view class="title">{{ category.name }}</view>
 					</view>
@@ -89,24 +85,19 @@
 					<view class="products-list" v-for="(category, index) in categories" :key="index" :id="`products-${category.id}`">
 						<view class="category-name">{{ category.name }}</view>
 						<view class="products">
-							<view class="product" v-for="(product, key) in category.products" :key="key" 
-								@tap="showProductDetailModal(product)">
+							<view class="product" v-for="(product, key) in category.products" :key="key" @tap="showProductDetailModal(product)">
 								<image :src="product.images[0].url" mode="widthFix" class="image"></image>
 								<view class="content">
 									<view class="name">{{ product.name }}</view>
 									<view class="labels">
-										<view class="label" 
-										:style="{color: label.label_color, background: $util.hexToRgba(label.label_color, 0.2)}"
+										<view class="label" :style="{color: label.label_color, background: $util.hexToRgba(label.label_color, 0.2)}"
 										 v-for="label in product.labels" :key="label.id">{{ label.name }}</view>
 									</view>
 									<view class="description">{{ product.description }}</view>
 									<view class="price">
 										<view>￥{{ product.price }}</view>
-										<actions :materials-btn="!product.is_single" 
-												@materials="showProductDetailModal(product)" 
-												:number="productCartNum(product.id)"
-												@add="handleAddToCart(product)" 
-												@minus="handleMinusFromCart(product)" />
+										<actions :materials-btn="!product.is_single" @materials="showProductDetailModal(product)" :number="productCartNum(product.id)"
+										 @add="handleAddToCart(product)" @minus="handleMinusFromCart(product)" />
 									</view>
 								</view>
 							</view>
@@ -118,32 +109,26 @@
 			<!-- 右侧商品列表 end -->
 		</view>
 		<!-- 商品详情 modal begin -->
-		<product-modal :product="product" 
-						:visible="productModalVisible" 
-						@cancel="closeProductDetailModal" 
-						@add-to-cart="handleAddToCartInModal" 
-		/>
+		<product-modal :product="product" :visible="productModalVisible" @cancel="closeProductDetailModal" @add-to-cart="handleAddToCartInModal" />
 		<!-- 商品详情 modal end -->
 		<!-- 购物车栏 begin -->
-		<cart-bar :cart="cart" 
-				  @add="handleAddToCart" 
-				  @minus="handleMinusFromCart"
-				  @clear="clearCart"
-				  @pay="pay"
-		/>
+		<cart-bar :cart="cart" @add="handleAddToCart" @minus="handleMinusFromCart" @clear="clearCart" @pay="pay" />
 		<!-- 购物车栏 end -->
 		<search :show="showSearch" :categories="categories" @hide="showSearch=false" @choose="showProductDetailModal"></search>
 	</view>
 </template>
 
 <script>
-	import {mapState, mapMutations} from 'vuex'
+	import {
+		mapState,
+		mapMutations
+	} from 'vuex'
 	import Actions from './components/actions/actions.vue'
 	import CartBar from './components/cartbar/cartbar.vue'
 	import ProductModal from './components/product-modal/product-modal.vue'
 	import cartPopup from './components/cart-popup/cart-popup.vue'
 	import Search from './components/search/search.vue'
-	
+
 	export default {
 		components: {
 			Actions,
@@ -179,13 +164,13 @@
 		},
 		computed: {
 			...mapState(['orderType', 'address']),
-			productCartNum() {	//计算单个饮品添加到购物车的数量
+			productCartNum() { //计算单个饮品添加到购物车的数量
 				return id => this.cart.reduce((acc, cur) => {
-						if(cur.id === id) {
-							return acc += cur.number
-						}
-						return acc
-					}, 0)
+					if (cur.id === id) {
+						return acc += cur.number
+					}
+					return acc
+				}, 0)
 			}
 		},
 		async onLoad() {
@@ -197,7 +182,7 @@
 		methods: {
 			...mapMutations(['SET_ORDER_TYPE']),
 			switchOrderType() {
-				if(this.orderType === 'takein') {
+				if (this.orderType === 'takein') {
 					uni.navigateTo({
 						url: '/pages/addresses/addresses'
 					})
@@ -205,20 +190,20 @@
 					this.SET_ORDER_TYPE('takein')
 				}
 			},
-			handleAddToCart(product) {	//添加到购物车
+			handleAddToCart(product) { //添加到购物车
 				const index = this.cart.findIndex(item => {
-					if(!product.is_single) {
+					if (!product.is_single) {
 						return (item.id == product.id) && (item.materials_text == product.materials_text)
 					} else {
 						return item.id === product.id
 					}
 				})
-				
-				if(index > -1) {
+
+				if (index > -1) {
 					this.cart[index].number += (product.number || 1)
 					return
 				}
-				
+
 				this.cart.push({
 					id: product.id,
 					cate_id: product.category_id,
@@ -232,13 +217,13 @@
 			},
 			handleMinusFromCart(product) { //从购物车减商品
 				let index
-				if(product.is_single) {
-				   index = this.cart.findIndex(item => item.id == product.id)
+				if (product.is_single) {
+					index = this.cart.findIndex(item => item.id == product.id)
 				} else {
-				   index = this.cart.findIndex(item => (item.id == product.id) && (item.materials_text == product.materials_text))
+					index = this.cart.findIndex(item => (item.id == product.id) && (item.materials_text == product.materials_text))
 				}
 				this.cart[index].number -= 1
-				if(this.cart[index].number <= 0) {
+				if (this.cart[index].number <= 0) {
 					this.cart.splice(index, 1)
 				}
 			},
@@ -264,10 +249,14 @@
 				this.productsScrollTop = this.categories.find(item => item.id == id).top
 				this.$nextTick(() => this.currentCategoryId = id)
 			},
-			productsScroll({detail}) {
-				const {scrollTop} = detail
-				let tabs = this.categories.filter(item=> item.top <= scrollTop).reverse()
-				if(tabs.length > 0){
+			productsScroll({
+				detail
+			}) {
+				const {
+					scrollTop
+				} = detail
+				let tabs = this.categories.filter(item => item.top <= scrollTop).reverse()
+				if (tabs.length > 0) {
 					this.currentCategoryId = tabs[0].id
 				}
 			},
@@ -277,22 +266,22 @@
 				view.fields({
 					size: true
 				}, data => {
-					if(data && data.height){
+					if (data && data.height) {
 						h += Math.floor(data.height)
 					}
-					
+
 				}).exec()
-				
+
 				this.categories.forEach(item => {
 					let view = uni.createSelectorQuery().select(`#products-${item.id}`)
 					view.fields({
 						size: true
 					}, data => {
 						item.top = h
-						if(data && data.height){
-								h += Math.floor(data.height)
+						if (data && data.height) {
+							h += Math.floor(data.height)
 						}
-					
+
 						item.bottom = h
 					}).exec()
 				})

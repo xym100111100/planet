@@ -1,9 +1,9 @@
 <template>
 	<view class="container">
 		<view class="container-header">
-			<view :class="'label'+item.index" v-for="(item , index) in labels" :key="index">
+			<!-- <view :class="'label'+item.index" v-for="(item , index) in labels" :key="index">
 				{{item.title}}
-			</view>
+			</view> -->
 
 			<view class="navbar">
 				<view type="default" plain class="talk-btn">
@@ -27,7 +27,7 @@
 						2
 					</view>
 					<view class="item-text">
-						本周点亮
+
 					</view>
 
 				</view>
@@ -43,7 +43,7 @@
 						20
 					</view>
 					<view class="item-text">
-						本周点亮
+
 					</view>
 				</view>
 				<view class="item item-right ">
@@ -58,7 +58,7 @@
 						3
 					</view>
 					<view class="item-text">
-						本周点亮
+
 					</view>
 				</view>
 			</view>
@@ -77,13 +77,11 @@
 		<swiper :current="tabIndex" :duration="300" class="swiper" :show-scrollbar="false">
 			<!-- 星球榜 begin -->
 			<swiper-item @touchmove.stop="handleSwiperItemChange">
-				<scroll-view scroll-y="true" class="orders-scroll">
+				<scroll-view scroll-y="true" style="height: 100%;" class="orders-scroll">
 					<view class="wrapper">
 						<view class="order-list">
 							<navigator class="order" v-for="(item, index) in kingList1" :key="index" open-type="navigate" :url="'/pages/order/detail?id=' + item.id">
-								<view class="index-num">
-									{{index +1}}
-								</view>
+								
 								<view class="header">
 
 									<view class="flex-fill font-size-medium header-left  ">
@@ -92,7 +90,7 @@
 									</view>
 									<view class="status">
 										<view>
-											本周点亮<text class="back">{{item.backMoney}}</text>
+											<text class="back">{{item.backMoney}}</text>
 										</view>
 										<view class="icon">
 											<image src="/static/images/common/star.png"> </image>
@@ -125,13 +123,12 @@
 			<swiper-item @touchmove.stop="handleSwiperItemChange">
 				<!-- 星球榜 begin -->
 
-				<scroll-view scroll-y="true" class="orders-scroll">
+
+				<scroll-view scroll-y="true" style="height: 100%;" class="orders-scroll">
 					<view class="wrapper">
 						<view class="order-list">
 							<navigator class="order" v-for="(item, index) in kingList1" :key="index" open-type="navigate" :url="'/pages/order/detail?id=' + item.id">
-								<view class="index-num">
-									{{index +1}}
-								</view>
+								
 								<view class="header">
 
 									<view class="flex-fill font-size-medium header-left  ">
@@ -140,7 +137,7 @@
 									</view>
 									<view class="status">
 										<view>
-											本周点亮<text class="back">{{item.backMoney}}</text>
+											<text class="back">{{item.backMoney}}</text>
 										</view>
 										<view class="icon">
 											<image src="/static/images/common/star.png"> </image>
@@ -156,7 +153,7 @@
 
 							</navigator>
 						</view>
-						<!-- <view class="no-order-content">
+						<!-- 	<view class="no-order-content">
 							<image src="https://go.cdn.heytea.com/storage/ad/2020/05/20/0bdb360866d94aa4a4404c0b676a1982.jpg"></image>
 							<view class="tips">
 								<view>您今天还没有下单</view>
@@ -177,6 +174,17 @@
 	export default {
 		data() {
 			return {
+				finishText: '加载中...',
+				triggered: true, // 下拉状态，显示自定义下拉组件
+				_freshing: false, // 防止重复触发下拉
+				isFinish: false,
+				dataList: [],
+				queryParams: {
+					page: 1,
+					row: 10
+				},
+
+
 				tabIndex: 0,
 				orderMenuIndex: 0,
 				orders: [],
@@ -189,16 +197,11 @@
 
 			}
 		},
-		async onLoad() {},
-		computed: {
-			batchInvoiceVisible() {
-				return (!this.orderMenuIndex && this.orders.length) || (this.orderMenuIndex && this.storeOrders.length)
-			}
-		},
 		created() {
 			this.getOrders()
 			this.getRankingList()
 			this.getUserLabels()
+
 		},
 		methods: {
 			async getUserLabels() {
@@ -227,15 +230,13 @@
 			},
 			async getRankingList() {
 
+				this.kingList1 = []
+				this.kingList2 = []
 				let {
 					data = []
 				} = await this.$api2.request('/ranking/getRankingList')
 				this.kingList1 = data
 				this.kingList2 = data
-			},
-			async lower(e) {
-				console.log(e)
-
 			},
 			async switchTab(index) {
 				if (this.tabIndex === index) return
@@ -252,9 +253,11 @@
 				if (!this.orderMenuIndex) {
 					this.orders = await this.$api('orders')
 				} else {
+					this.storeOrders = []
 					this.storeOrders = await this.$api('storeOrders')
 				}
-			}
+			},
+
 		}
 	};
 </script>
@@ -453,12 +456,10 @@
 			display: flex;
 			width: 100%;
 			padding: 20rpx 30rpx 0;
-			height: 320rpx;
 			align-items: flex-end;
 
 			.item {
 				background: white;
-				height: 280rpx;
 				flex: 1;
 				text-align: center;
 				box-sizing: border-box;
@@ -493,6 +494,7 @@
 				border-top-left-radius: 10rpx;
 				border-bottom-left-radius: 10rpx;
 				position: relative;
+				padding-bottom: 30rpx;
 			}
 
 			.item-left::before {
@@ -505,11 +507,12 @@
 				border-left: 3rpx solid transparent;
 				border-right: 3rpx solid transparent;
 				border-top: 170rpx solid #f0e8e8;
+				
 
 			}
 
 			.item-center {
-				height: 320rpx;
+				padding-bottom: 80rpx;
 				border-top-right-radius: 10rpx;
 				border-top-left-radius: 10rpx;
 			}
@@ -519,6 +522,7 @@
 				border-top-right-radius: 10rpx;
 				border-bottom-right-radius: 10rpx;
 				position: relative;
+				padding-bottom: 30rpx;
 			}
 
 			.item-right::after {
@@ -620,23 +624,17 @@
 
 		.order {
 			background-color: $bg-color-white;
-			padding: 30rpx 40rpx;
+			padding: 30rpx 26rpx 30rpx 10rpx;
 			margin-bottom: 18rpx;
 			position: relative;
 
-			.index-num {
-				color: $text-color-assist;
-				position: absolute;
-				left: 25rpx;
-				top: 40%;
-				font-size: $font-size-lg;
-			}
+			
 
 			.header {
 				display: flex;
 				justify-content: space-between;
 				align-items: center;
-				padding-left: 20rpx;
+				padding-left: 10rpx;
 
 
 				.status {
