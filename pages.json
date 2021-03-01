@@ -228,7 +228,7 @@
 			"pagePath": "pages/ranking/ranking",
 			"iconPath": "static/images/tabbar/mart.png",
 			"selectedIconPath": "static/images/tabbar/mart_selected.png",
-			"text": "星球"
+			"text": "排行榜"
 		}, {
 			"pagePath": "pages/order/order",
 			"iconPath": "static/images/tabbar/order.png",

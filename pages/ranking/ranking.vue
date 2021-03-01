@@ -1,19 +1,7 @@
 <template>
 	<view class="container">
 		<view class="container-header">
-			<!-- <view :class="'label'+item.index" v-for="(item , index) in labels" :key="index">
-				{{item.title}}
-			</view> -->
-
-			<view class="navbar">
-				<view type="default" plain class="talk-btn">
-				</view>
-			</view>
-
-			<view class="tabbar">
-				<view class="item" :class="{active: !tabIndex}" @tap="switchTab(0)">星球榜</view>
-				<view class="item" :class="{active: tabIndex}" @tap="switchTab(1)">好友榜</view>
-			</view>
+			<MyStatusBar/>
 			<view class="ranking-three">
 				<view class="item item-left ">
 					<view class="item-img">
@@ -74,39 +62,37 @@
 				</view>
 			</view>
 		</view>
-		<swiper :current="tabIndex" :duration="300" class="swiper" :show-scrollbar="false">
-			<!-- 星球榜 begin -->
-			<swiper-item @touchmove.stop="handleSwiperItemChange">
-				<scroll-view scroll-y="true" style="height: 100%;" class="orders-scroll">
-					<view class="wrapper">
-						<view class="order-list">
-							<navigator class="order" v-for="(item, index) in kingList1" :key="index" open-type="navigate" :url="'/pages/order/detail?id=' + item.id">
-								
-								<view class="header">
 
-									<view class="flex-fill font-size-medium header-left  ">
-										<image :src="item.portrait" class="avatar"></image>
-										<text>{{item.name }}</text>
-									</view>
-									<view class="status">
-										<view>
-											<text class="back">{{item.backMoney}}</text>
-										</view>
-										<view class="icon">
-											<image src="/static/images/common/star.png"> </image>
-										</view>
-									</view>
+		<scroll-view scroll-y="true" style="height: 100%;" class="orders-scroll">
+			<view class="wrapper">
+				<view class="order-list">
+					<navigator class="order" v-for="(item, index) in kingList1" :key="index" open-type="navigate" :url="'/pages/order/detail?id=' + item.id">
 
+						<view class="header">
+
+							<view class="flex-fill font-size-medium header-left  ">
+								<image :src="item.portrait" class="avatar"></image>
+								<text>{{item.name }}</text>
+							</view>
+							<view class="status">
+								<view>
+									<text class="back">{{item.backMoney}}</text>
 								</view>
-								<view class="friends">
-									<view class="friends-list">
-										<image v-for="(img ,index) in item.friendsList" :key="index" class="list-img" :src="img" mode=""></image>
-									</view>
+								<view class="icon">
+									<image src="/static/images/common/star.png"> </image>
 								</view>
+							</view>
 
-							</navigator>
 						</view>
-						<!-- <view class="no-order-content">
+						<view class="friends">
+							<view class="friends-list">
+								<image v-for="(img ,index) in item.friendsList" :key="index" class="list-img" :src="img" mode=""></image>
+							</view>
+						</view>
+
+					</navigator>
+				</view>
+				<!-- <view class="no-order-content">
 							<image src="https://go.cdn.heytea.com/storage/ad/2020/05/20/0bdb360866d94aa4a4404c0b676a1982.jpg"></image>
 							<view class="tips">
 								<view>您今天还没有下单</view>
@@ -114,64 +100,18 @@
 							</view>
 							<button type="primary" class="font-size-lg" hover-class="none">去下单</button>
 						</view> -->
-					</view>
-				</scroll-view>
-
-			</swiper-item>
-			<!-- 星球榜 end -->
-			<!-- 星球榜 begin -->
-			<swiper-item @touchmove.stop="handleSwiperItemChange">
-				<!-- 星球榜 begin -->
-
-
-				<scroll-view scroll-y="true" style="height: 100%;" class="orders-scroll">
-					<view class="wrapper">
-						<view class="order-list">
-							<navigator class="order" v-for="(item, index) in kingList1" :key="index" open-type="navigate" :url="'/pages/order/detail?id=' + item.id">
-								
-								<view class="header">
-
-									<view class="flex-fill font-size-medium header-left  ">
-										<image :src="item.portrait" class="avatar"></image>
-										<text>{{item.name }}</text>
-									</view>
-									<view class="status">
-										<view>
-											<text class="back">{{item.backMoney}}</text>
-										</view>
-										<view class="icon">
-											<image src="/static/images/common/star.png"> </image>
-										</view>
-									</view>
-
-								</view>
-								<view class="friends">
-									<view class="friends-list">
-										<image v-for="(img ,index) in item.friendsList" :key="index" class="list-img" :src="img" mode=""></image>
-									</view>
-								</view>
-
-							</navigator>
-						</view>
-						<!-- 	<view class="no-order-content">
-							<image src="https://go.cdn.heytea.com/storage/ad/2020/05/20/0bdb360866d94aa4a4404c0b676a1982.jpg"></image>
-							<view class="tips">
-								<view>您今天还没有下单</view>
-								<view>快去选择一杯喜欢的茶吧</view>
-							</view>
-							<button type="primary" class="font-size-lg" hover-class="none">去下单</button>
-						</view> -->
-					</view>
-				</scroll-view>
-			</swiper-item>
-			<!-- 历史订单 end -->
-		</swiper>
-		<!-- <image src="https://go.cdn.heytea.com/storage/ad/2020/05/20/1a389117c2fb44d5bcad4a910a68246c.jpg"></image> -->
+			</view>
+		</scroll-view>
 	</view>
 </template>
 
 <script>
+	import MyStatusBar from '@/components/my-status-bar/my-status-bar.vue'
+
 	export default {
+		components: {
+			MyStatusBar
+		},
 		data() {
 			return {
 				finishText: '加载中...',
@@ -235,7 +175,9 @@
 				let {
 					data = []
 				} = await this.$api2.request('/ranking/getRankingList')
-				this.kingList1 = data
+			
+				this.kingList1 = [...data,...data]
+				
 				this.kingList2 = data
 			},
 			async switchTab(index) {
@@ -268,8 +210,7 @@
 	}
 
 	.container-header {
-		height: 560rpx;
-		background-color: #DBA871;
+		background:url('https://go.cdn.heytea.com/storage/ad/2020/05/01/e1c6915022c849fd9492377021aef454.jpg');
 		position: relative;
 
 		.label0 {
@@ -384,15 +325,13 @@
 		}
 
 		.tags {
-			position: absolute;
+			position: fixed;
 			right: 20rpx;
-			bottom: -300rpx;
+			bottom: 140rpx;
 			z-index: 1000;
 			background: rgba(0, 0, 0, 0.2);
 			color: white;
-
 			.item {
-
 				padding: 20rpx;
 			}
 		}
@@ -455,7 +394,7 @@
 		.ranking-three {
 			display: flex;
 			width: 100%;
-			padding: 20rpx 30rpx 0;
+			padding: 20rpx 30rpx 20rpx;
 			align-items: flex-end;
 
 			.item {
@@ -507,7 +446,7 @@
 				border-left: 3rpx solid transparent;
 				border-right: 3rpx solid transparent;
 				border-top: 170rpx solid #f0e8e8;
-				
+
 
 			}
 
@@ -628,7 +567,7 @@
 			margin-bottom: 18rpx;
 			position: relative;
 
-			
+
 
 			.header {
 				display: flex;

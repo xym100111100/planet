@@ -46,7 +46,7 @@
 			</view>
 			<!-- member card end -->
 			<!-- 星球播报 begin -->
-			<view class="xinqiubobao">
+<!-- 			<view class="xinqiubobao">
 				<view class="title">星球动态</view>
 				<swiper class="swiper" next-margin="50px" autoplay :interval="5000" :duration="500" circular>
 					<swiper-item class="swiper-item" v-for="(item, index) in boardcast" :key="index">
@@ -59,10 +59,10 @@
 						</view>
 					</swiper-item>
 				</swiper>
-			</view>
+			</view> -->
 			<!-- 星球播报 end -->
 			<!-- 任务中心 begin -->
-			<view class="task-center" @tap="taskCenter">
+	<!-- 		<view class="task-center" @tap="taskCenter">
 				<view class="intro">
 					<view class="title">任务中心</view>
 					<view class="subtitle">MISSION CENTER</view>
@@ -70,7 +70,7 @@
 				<view class="image-wrapper">
 					<image src="/static/images/my/b3d3a98e3c7f450aaa32fbec6aecdfaf.png"></image>
 				</view>
-			</view>
+			</view> -->
 			<!-- 任务中心 end -->
 		</view>
 		<!-- 开通礼包 begin -->
@@ -126,19 +126,19 @@
 		</view> -->
 		<!-- 开通礼包 end -->
 		
-		<list-cell hover arrow @tap="goPage('/pages/my/theme/theme')"  >
+<!-- 		<list-cell hover arrow @tap="goPage('/pages/my/theme/theme')"  >
 			<view class="list-cell-wrapper">
 				<view view="title">主题大战</view>
 				<view class="subtitle">每周五奶茶日免费获得4杯任意奶茶</view>
 			</view>
-		</list-cell>
+		</list-cell> -->
 		<list-cell @tap="openLabel" hover arrow>
 			<view class="list-cell-wrapper"   >
 				<view view="title">个性标签</view>
 				<view class="subtitle">星球排行榜霸屏幕展示</view>
 			</view>
 		</list-cell>
-		<list-cell hover arrow>
+		<!-- <list-cell hover arrow>
 			<view class="list-cell-wrapper">
 				<view view="title">星球封面</view>
 			</view>
@@ -152,7 +152,7 @@
 			<view class="list-cell-wrapper">
 				<view view="title">消息中心</view>
 			</view>
-		</list-cell>
+		</list-cell> -->
 		<list-cell hover arrow last>
 			<view class="list-cell-wrapper">
 				<view view="title">更多</view>
