@@ -18,8 +18,10 @@ import attendanceList from './attendance-list.js'
 import customPoints from './custom-points.js'
 import todayAttendance from './today-attendance.js'
 import getRankingList from './ranking.js'
+import rankingHistory from './rankingHistory.js'
 const json = {
 	getRankingList,
+	rankingHistory,
 	attendanceList,
 	customPoints,
 	todayAttendance,

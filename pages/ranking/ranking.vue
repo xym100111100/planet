@@ -1,7 +1,7 @@
 <template>
 	<view class="container">
 		<view class="container-header">
-			<MyStatusBar/>
+			<MyStatusBar />
 			<view class="ranking-three">
 				<view class="item item-left ">
 					<view class="item-img">
@@ -51,13 +51,13 @@
 				</view>
 			</view>
 			<view class="tags">
-				<view class="item" style="border-bottom: solid 1rpx #dba871;">
+				<view @tap="goPage('/pages/ranking/history/history')" class="item" style="border-bottom: solid 1rpx #dba871;">
 					历史榜单
 				</view>
-				<view class="item" style="border-bottom: solid 1rpx #dba871;">
+				<view @tap="openPopup('strategy')" class="item" style="border-bottom: solid 1rpx #dba871;">
 					上榜攻略
 				</view>
-				<view class="item">
+				<view @tap="openPopup('reward')" class="item">
 					上榜奖励
 				</view>
 			</view>
@@ -75,12 +75,33 @@
 								<text>{{item.name }}</text>
 							</view>
 							<view class="status">
-								<view>
-									<text class="back">{{item.backMoney}}</text>
+								<view v-if="index >=  0  &&  index <= 2">
+									<text class="back">任意奶茶</text>
 								</view>
-								<view class="icon">
-									<image src="/static/images/common/star.png"> </image>
+								<view v-if="index >=  3  &&  index <= 10">
+									<text class="back">星球卷</text>
 								</view>
+								<template v-if="index == 0">
+									<view class="icon" v-for="(item,index) in [1,2,3]" :key="index">
+										<image src="/static/images/common/nai-cha.png"> </image>
+									</view>
+								</template>
+								<template v-if="index == 1">
+									<view class="icon" v-for="(item,index) in [1,2]" :key="index">
+										<image src="/static/images/common/nai-cha.png"> </image>
+									</view>
+								</template>
+								<template v-if="index == 2">
+									<view class="icon" v-for="(item,index) in [1]" :key="index">
+										<image src="/static/images/common/nai-cha.png"> </image>
+									</view>
+								</template>
+								<template v-if="index >=  3  &&  index <= 10">
+									<view class="icon">
+										<image src="/static/images/common/you-hui-juan2.png"> </image>
+									</view>
+								</template>
+
 							</view>
 
 						</view>
@@ -102,6 +123,36 @@
 						</view> -->
 			</view>
 		</scroll-view>
+
+		<uni-popup ref="strategy" type="center">
+			<view class="pl-popup">
+				<view class="popup-title">
+					上榜攻略
+				</view>
+				<view class="popup-content text-color-assist">
+					<view>1.购买奶茶后分享给好友点亮星球，一周内点亮星球越多就排在越前面。</view>
+					<view>2.一周内一个好友只能帮点亮一次。</view>
+				</view>
+				
+			</view>
+		</uni-popup>
+
+		<uni-popup ref="reward" type="center">
+			<view class="pl-popup">
+				<view class="popup-title">
+					上榜奖励
+				</view>
+				<view class="popup-content text-color-assist">
+					<view>1.第一名奖励3杯任意奶茶。</view>
+					<view>2.第二名奖励2杯任意奶茶。</view>
+					<view>3.第三名奖励2杯任意奶茶。</view>
+					<view>4.第四名到第十名奖励1张星球卷。</view>
+					<view>5.星球奶茶日(每周日)早上八点截止统计并发放奖励。</view>
+				</view>
+
+			</view>
+		</uni-popup>
+
 	</view>
 </template>
 
@@ -144,6 +195,15 @@
 
 		},
 		methods: {
+			openPopup(val, payload, method) {
+				this.$refs[val].open(payload, method)
+			},
+			goPage(url) {
+
+				uni.navigateTo({
+					url: url
+				})
+			},
 			async getUserLabels() {
 				let {
 					data = []
@@ -175,9 +235,9 @@
 				let {
 					data = []
 				} = await this.$api2.request('/ranking/getRankingList')
-			
-				this.kingList1 = [...data,...data]
-				
+
+				this.kingList1 = [...data, ...data]
+
 				this.kingList2 = data
 			},
 			async switchTab(index) {
@@ -210,7 +270,7 @@
 	}
 
 	.container-header {
-		background:url('https://go.cdn.heytea.com/storage/ad/2020/05/01/e1c6915022c849fd9492377021aef454.jpg');
+		background: url('https://go.cdn.heytea.com/storage/ad/2020/05/01/e1c6915022c849fd9492377021aef454.jpg');
 		position: relative;
 
 		.label0 {
@@ -328,11 +388,12 @@
 			position: fixed;
 			right: 20rpx;
 			bottom: 140rpx;
-			z-index: 1000;
+			z-index: 1;
 			background: rgba(0, 0, 0, 0.2);
 			color: white;
+
 			.item {
-				padding: 20rpx;
+				padding: 25rpx;
 			}
 		}
 
@@ -589,9 +650,7 @@
 					}
 
 					.back {
-
-						padding: 0 3rpx;
-						font-size: $font-size-extra-lg;
+						padding: 0 10rpx;
 					}
 
 					.total {

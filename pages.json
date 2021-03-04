@@ -192,7 +192,7 @@
             "path" : "pages/my/theme/log",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "历史记录",
+                "navigationBarTitleText": "历史榜单",
                 "enablePullDownRefresh": false
             }
             
@@ -202,6 +202,15 @@
             "style" :                                                                                    
             {
                 "navigationBarTitleText": "添加主题",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/ranking/history/history",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "历史磅单",
                 "enablePullDownRefresh": false
             }
             

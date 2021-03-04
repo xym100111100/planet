@@ -65,15 +65,7 @@
 							</scroll-view>
 						</swiper-item>
 						<!-- 门店订单 end -->
-						<!-- 百货订单 begin -->
-						<swiper-item @touchmove.stop="handleSwiperItemChange">
-							<view class="store-order-wrapper">
-								<image src="/static/images/order/default_img_order.png"></image>
-								<view>您还没有下单</view>
-								<view>快去百货商城逛逛吧</view>
-							</view>
-						</swiper-item>
-						<!-- 百货订单 end -->
+				
 					</swiper>
 				</view>
 			</swiper-item>

@@ -22,13 +22,13 @@
 			<!-- section-2 end -->
 			<!-- section-2 begin -->
 			<view class="section-2">
-				<navigator class="item" open-type="switchTab" url="/pages/mart/mart" hover-class="none">
+				<view class="item" @tap="openPopup('rule')">
 					<view class="title">
 						<image src="/static/images/home/home_icon_baihuo1.png"></image>
 						<view>分享免费</view>
 					</view>
 					<view class="tips">好运总是 不期而至</view>
-				</navigator>
+				</view>
 				<navigator class="item" open-type="navigate" url="/pages/home/group-dinner" hover-class="none">
 					<view class="title">
 						<image src="/static/images/home/home_icon_qiye1.png"></image>
@@ -39,7 +39,7 @@
 			</view>
 			<!-- section-2 end -->
 			<view class="section-3">
-				<navigator class="my-integral" open-type="navigate" url="/pages/integrals/mall" hover-class="none">
+				<navigator class="my-integral" open-type="navigate" url="/pages/coupons/coupons" hover-class="none">
 					<view class="integrals">
 						<view>我的星球卷</view>
 						<view class="neutra-font">1</view>
@@ -54,6 +54,31 @@
 				</navigator>
 			</view>
 		</view>
+
+		<uni-popup ref="rule" type="center">
+			<view class="pl-popup">
+				<view class="popup-title">
+					分享免费
+				</view>
+				<view class="popup-content text-color-assist">
+					<view>1.每次购买后分享给好友均获得免费或欢乐金。</view>
+					<view>2.一欢乐金等于1人民币，可用来抵扣下次消费金额。</view>
+					<view>3.分享用户越多越容易获得免费机会或大金额欢乐金。</view>
+					<view>4.分享的用户帮点亮星球后，每周日为星球奶茶日，星球榜上前三位用户将获得免费奶茶。</view>
+					<view>5.每次购买均能点亮三次星球，每次点亮将消耗一张星球卷。</view>
+				</view>
+				<view class="popup-btns">
+					<navigator class="btn secondary" open-type="switchTab" url="/pages/order/order">
+						立即分享
+					</navigator>
+					<navigator class="btn primary"  open-type="switchTab" url="/pages/index/index" hover-class="none" >
+						购买&分享
+					</navigator>
+				</view>
+			</view>
+		</uni-popup>
+
+
 	</view>
 </template>
 
@@ -71,6 +96,9 @@
 			}
 		},
 		methods: {
+			openPopup(val, payload, method) {
+				this.$refs[val].open(payload, method)
+			},
 		}
 	}
 </script>
@@ -79,24 +107,24 @@
 	page {
 		max-height: 100%;
 	}
-	
+
 	.banner-swiper {
 		width: 100%;
 		height: 600rpx;
-		
+
 		.banner-swiper-item {
 			image {
 				width: 100%;
 			}
 		}
 	}
-	
+
 	.content {
 		width: 100%;
 		padding: 0 30rpx;
 		position: relative;
 	}
-	
+
 	.section-1 {
 		position: relative;
 		background-color: $bg-color-white;
@@ -106,7 +134,7 @@
 		display: flex;
 		margin-bottom: 30rpx;
 		box-shadow: $box-shadow;
-		
+
 		.item {
 			flex: 1;
 			flex-shrink: 0;
@@ -114,7 +142,7 @@
 			flex-direction: column;
 			align-items: center;
 			position: relative;
-			
+
 			&:nth-child(1):after {
 				content: '';
 				position: absolute;
@@ -124,24 +152,24 @@
 				width: 2rpx;
 				background-color: $border-color;
 			}
-			
+
 			image {
 				width: 100rpx;
 				margin-bottom: 20rpx;
 			}
-			
+
 			.wenyue-font {
 				font-size: 48rpx;
 				margin-bottom: 10rpx;
-			}	
+			}
 		}
 	}
-	
+
 	.section-2 {
 		display: flex;
 		justify-content: space-between;
 		margin-bottom: 30rpx;
-		
+
 		.item {
 			width: 335rpx;
 			background-color: #EAEBEC;
@@ -151,28 +179,28 @@
 			align-items: center;
 			justify-content: center;
 			border-radius: $border-radius-lg;
-			
+
 			.title {
 				width: 100%;
 				display: flex;
 				align-items: center;
 				justify-content: center;
 				font-size: $font-size-lg;
-				
+
 				image {
 					width: 60rpx;
 					height: 60rpx;
 					margin-right: 10rpx;
 				}
 			}
-			
+
 			.tips {
 				color: $text-color-assist;
 				font-size: $font-size-base;
 			}
 		}
 	}
-	
+
 	.section-3 {
 		margin-bottom: 30rpx;
 		display: flex;
@@ -181,39 +209,39 @@
 		font-size: $font-size-base;
 		color: $text-color-assist;
 		padding: 0 10rpx;
-		
+
 		.my-integral {
 			flex: 1;
 			display: flex;
 			flex-direction: column;
-			
+
 			.integrals {
 				display: flex;
 				align-items: center;
 				font-size: $font-size-lg;
 				color: $text-color-base;
 				margin-bottom: 10rpx;
-				
+
 				.neutra-font {
 					margin-left: 10rpx;
 					font-size: 42rpx;
 				}
 			}
 		}
-		
+
 		.my-code {
 			display: flex;
 			flex-direction: column;
 			align-items: center;
 			padding: 0 30rpx;
 			position: relative;
-			
+
 			image {
 				width: 60rpx;
 				height: 60rpx;
 				margin-bottom: $spacing-col-sm;
 			}
-			
+
 			&:before {
 				content: " ";
 				position: absolute;
