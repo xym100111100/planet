@@ -15,25 +15,29 @@
 			<!-- 当前订单 begin -->
 			<swiper-item @touchmove.stop="handleSwiperItemChange">
 				<view class="no-order-content">
-					<image src="https://go.cdn.heytea.com/storage/ad/2020/05/20/0bdb360866d94aa4a4404c0b676a1982.jpg"></image>
+					<image src="https://go.cdn.heytea.com/storage/ad/2020/05/20/0bdb360866d94aa4a4404c0b676a1982.jpg">
+					</image>
 					<view class="tips">
 						<view>您今天还没有下单</view>
 						<view>快去选择一杯喜欢的茶吧</view>
 					</view>
-					<button type="primary" class="font-size-lg" hover-class="none">去下单</button>
+					<button @tap="goSwitchPage('/pages/index/index')" type="primary" class="font-size-lg"
+						hover-class="none">去下单</button>
 				</view>
 			</swiper-item>
 			<!-- 当前订单 end -->
 			<!-- 历史订单 begin -->
 			<swiper-item @touchmove.stop="handleSwiperItemChange">
 				<view class="history-order">
-					<swiper :current="orderMenuIndex" @scrolltolower="lower" :duration="300" :show-scrollbar="false" class="history-order-swiper">
+					<swiper :current="orderMenuIndex" @scrolltolower="lower" :duration="300" :show-scrollbar="false"
+						class="history-order-swiper">
 						<!-- 门店订单 begin -->
 						<swiper-item @touchmove.stop="handleSwiperItemChange">
 							<scroll-view scroll-y="true" class="orders-scroll">
 								<view class="wrapper">
 									<view class="order-list">
-										<navigator class="order" v-for="(order, index) in orders" :key="index" open-type="navigate" :url="'/pages/order/detail?id=' + order.id">
+										<navigator class="order" v-for="(order, index) in orders" :key="index"
+											open-type="navigate" :url="'/pages/order/detail?id=' + order.id">
 											<view class="header">
 												<view class="flex-fill font-size-medium">{{ order.shop.name }}</view>
 												<view class="status">
@@ -43,7 +47,8 @@
 											</view>
 											<scroll-view scroll-x>
 												<view class="images">
-													<image :src="item.image" v-for="(item, index) in order.items" :key="index"></image>
+													<image :src="item.image" v-for="(item, index) in order.items"
+														:key="index"></image>
 												</view>
 											</scroll-view>
 											<view class="info">
@@ -56,8 +61,10 @@
 												</view>
 											</view>
 											<view class="action">
-												<button type="primary" plain hover-class="none">点亮星球</button>
-												<button type="primary" plain hover-class="none">再来一单</button>
+
+												<button @tap="goSwitchPage('/pages/index/index')" type="primary" plain
+													hover-class="none">再来一单</button>
+												<button @tap="goPage('/pages/index/index')" type="primary" style="color: white; background: #DBA871;" plain hover-class="none">点亮星球</button>
 											</view>
 										</navigator>
 									</view>
@@ -65,7 +72,7 @@
 							</scroll-view>
 						</swiper-item>
 						<!-- 门店订单 end -->
-				
+
 					</swiper>
 				</view>
 			</swiper-item>
@@ -104,6 +111,17 @@
 
 		},
 		methods: {
+			goPage(url) {
+			
+				uni.navigateTo({
+					url: url
+				})
+			},
+			goSwitchPage(url) {
+				uni.switchTab({
+					url: url
+				})
+			},
 			GetStatusBarHeight() {
 				wx.getSystemInfo({
 					success: (res) => {

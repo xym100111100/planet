@@ -51,9 +51,9 @@
 				</view>
 			</view>
 			<view class="tags">
-				<view @tap="goPage('/pages/ranking/history/history')" class="item" style="border-bottom: solid 1rpx #dba871;">
+			<!-- 	<view @tap="goPage('/pages/ranking/history/history')" class="item" style="border-bottom: solid 1rpx #dba871;">
 					历史榜单
-				</view>
+				</view> -->
 				<view @tap="openPopup('strategy')" class="item" style="border-bottom: solid 1rpx #dba871;">
 					上榜攻略
 				</view>

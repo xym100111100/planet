@@ -4,22 +4,27 @@
 			<view class="search-box">
 				<view class="search-input">
 					<image src="/static/images/common/search-icon.png" class="search-icon"></image>
-					<input type="text" v-model="keyword" placeholder="搜索好友" placeholder-class="placeholder" @input="handleKeywordInput">
-					<image v-if="keyword" src="/static/images/common/image-delete.png" class="close-icon" @tap="clear" />
+					<input type="text" v-model="keyword" placeholder="搜索好友" placeholder-class="placeholder"
+						@input="handleKeywordInput">
+					<image v-if="keyword" src="/static/images/common/image-delete.png" class="close-icon"
+						@tap="clear" />
 				</view>
 				<view class="ml-30" @tap="hide">取消</view>
 			</view>
 			<scroll-view class="result" scroll-y>
 				<template>
 					<view class="wrapper" style="padding: 0 30rpx 30rpx 0;">
-						<view class="product" v-for="(item, index) in result" :key="index" @tap="handleChoose(item, true)">
-							<view class="d-flex align-items-center">
+						<view class="product" v-for="(item, index) in result" :key="index"
+							@tap="handleChoose(item, true)">
+							<view class="d-flex align-items-center ml-20">
 								<image :src="item.url" class="pro-image" />
 								<view class="pro-name">{{ item.name }}</view>
 							</view>
 							<view class="pro-price">
-								<image v-if="item.price>0" style="height: 40rpx; width: 40rpx;" src="/static/images/common/signIn.png"></image>
-								<image  v-if="item.price==0" style="height: 40rpx; width: 40rpx;" src="/static/images/common/signIn2.png"></image>
+								<image v-if="item.price>0" style="height: 40rpx; width: 40rpx;"
+									src="/static/images/common/signIn.png"></image>
+								<image v-if="item.price==0" style="height: 40rpx; width: 40rpx;"
+									src="/static/images/common/signIn2.png"></image>
 							</view>
 						</view>
 					</view>
@@ -27,6 +32,35 @@
 			</scroll-view>
 		</view>
 		</view>
+		<uni-popup ref="reward" type="center">
+			<view class="pl-popup">
+				<view class="popup-title">
+					赠送星球卷
+				</view>
+				<view class="popup-content d-flex mt-40 pb-40 flex">
+					<view>
+						<image style="width: 93rpx; height: 63rpx;"
+							src="../../../../static/images/common/xing-qiu-juan.png" mode=""></image>
+					</view>
+					<view>
+						<image style="height: 50rpx;width: 100rpx;" src="../../../../static/images/common/xiang-you.png"
+							mode=""></image>
+					</view>
+					<view>
+						<image style="height: 70rpx;width: 70rpx; border-radius: 100%;"
+							src="https://wx.qlogo.cn/mmopen/vi_32/Hx7MFkCEmZVHziaTTiaHSiaCs4ApnH5CD0nYOhOg1nYUUMYtxMXkL6L4VL5icRfO5w4LGzW5ib0FZicwj2MficyYfZgCw/132"
+							mode=""></image>
+					</view>
+
+				</view>
+				<view class="popup-btns">
+					<view class="btn primary" @tap="sendSubmit">
+						立即赠送
+					</view>
+				</view>
+			</view>
+
+		</uni-popup>
 	</uni-transition>
 </template>
 
@@ -65,40 +99,64 @@
 						price: 2,
 						name: "小紅同学",
 						id: 932,
-						url: "https://go.cdn.heytea.com/storage/product/2020/05/18/fbcdfbd39c6548b185c1d0eef790808d.jpg"
+						url: "https://wx.qlogo.cn/mmopen/vi_32/Hx7MFkCEmZVHziaTTiaHSiaCs4ApnH5CD0nYOhOg1nYUUMYtxMXkL6L4VL5icRfO5w4LGzW5ib0FZicwj2MficyYfZgCw/132"
 					},
 					{
 						price: 0,
 						name: "小明同学",
 						id: 932,
-						url: "https://go.cdn.heytea.com/storage/product/2020/05/18/fbcdfbd39c6548b185c1d0eef790808d.jpg"
+						url: "https://wx.qlogo.cn/mmopen/vi_32/Hx7MFkCEmZVHziaTTiaHSiaCs4ApnH5CD0nYOhOg1nYUUMYtxMXkL6L4VL5icRfO5w4LGzW5ib0FZicwj2MficyYfZgCw/132"
 					},
 					{
 						price: 1,
 						name: "杰克",
 						id: 932,
-						url: "https://go.cdn.heytea.com/storage/product/2020/05/18/fbcdfbd39c6548b185c1d0eef790808d.jpg"
+						url: "https://wx.qlogo.cn/mmopen/vi_32/Hx7MFkCEmZVHziaTTiaHSiaCs4ApnH5CD0nYOhOg1nYUUMYtxMXkL6L4VL5icRfO5w4LGzW5ib0FZicwj2MficyYfZgCw/132"
 					}
 				]
 			}
 		},
 		async created() {
-			console.log("dddd")
 			this.hotSearch = await this.$api('hotSearch')
 			this.historySearch = await this.$api('historySearch')
 		},
 		methods: {
+			closePopup(val) {
+				this.$refs[val].close()
+			},
+			goPage(url) {
+				uni.navigateTo({
+					url: url
+				})
+			},
+			sendSubmit() {
+				this.closePopup('reward')
+				uni.showToast({
+					title: "已赠送",
+					icon: "none"
+				});
+				setTimeout(() => {
+					uni.redirectTo({
+						url: '/pages/coupons/coupons'
+					});
+				}, 2000)
+
+			},
+			openPopup(val, payload, method) {
+				this.$refs[val].open(payload, method)
+			},
 			hide() {
 				this.keyword = ''
 				this.result = []
 				this.$emit('hide')
 			},
 			handleChoose(item, isSearch = false) {
-				if (isSearch) {
-					this.hide()
-					this.$emit('choose', item)
-					return
-				}
+				this.openPopup('reward')
+				// if (isSearch) {
+				// 	this.hide()
+				// 	this.$emit('choose', item)
+				// 	return
+				// }
 				this.categories.forEach(category => {
 					const find = category.products.find(product => product.id == item.productId)
 					if (find) {
@@ -239,13 +297,24 @@
 			font-size: $font-size-base;
 
 			.pro-image {
-				width: 144rpx;
-				height: 108rpx;
+				width: 70rpx;
+				height: 70rpx;
+				border-radius: 100%;
+				margin-right: 20rpx;
 			}
 
 			.pro-price {
 				font-weight: 500 !important;
 			}
+		}
+	}
+
+	.pl-popup {
+		width: 600rpx;
+
+		.popup-content {
+			justify-content: space-around;
+
 		}
 	}
 </style>
